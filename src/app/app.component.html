@@ -1,4 +1,8 @@
-<ion-app>
+<ion-app [class.hide-tabs]="isLandingPage">
+
   <ion-router-outlet></ion-router-outlet>
+  <ion-tabs *ngIf="!isLandingPage">
+    <!-- Your tab buttons -->
+  </ion-tabs>
   <app-footer></app-footer> 
 </ion-app>
