@@ -1,20 +1,193 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+<!-- Sidebar Menu -->
+<ion-menu side="start" menuId="home-menu" contentId="home-content">
+  <!-- Sidebar Header with Profile Info -->
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-row class="profile-section" align-items-center>
+        <ion-col size="3">
+          <ion-avatar>
+            <img src="https://www.pngmart.com/files/12/Shopee-Logo-Transparent-PNG.png" alt="Profile Picture" />
+          </ion-avatar>
+        </ion-col>
+        <ion-col>
+          <h2>Steven Smiths</h2>
+        </ion-col>
+        <ion-col size="2">
+          <ion-icon name="close-outline" slot="end" (click)="closeMenu()"></ion-icon>
+        </ion-col>
+      </ion-row>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <!-- Menu List with routerLink -->
+  <ion-content class="menu-content">
+    <ion-list>
+      <ion-item button routerLink="/orders">
+        <ion-icon name="bag-outline" slot="start"></ion-icon>
+        <ion-label>My Orders</ion-label>
+      </ion-item>
+      <ion-item button routerLink="/profile">
+        <ion-icon name="person-outline" slot="start"></ion-icon>
+        <ion-label>My Profile</ion-label>
+      </ion-item>
+      <ion-item button routerLink="/delivery-address">
+        <ion-icon name="location-outline" slot="start"></ion-icon>
+        <ion-label>Delivery Address</ion-label>
+      </ion-item>
+      <ion-item button routerLink="/payment-methods">
+        <ion-icon name="card-outline" slot="start"></ion-icon>
+        <ion-label>Payment Methods</ion-label>
+      </ion-item>
+      <ion-item button routerLink="/contact-us">
+        <ion-icon name="mail-outline" slot="start"></ion-icon>
+        <ion-label>Contact Us</ion-label>
+      </ion-item>
+      <ion-item button routerLink="/settings">
+        <ion-icon name="settings-outline" slot="start"></ion-icon>
+        <ion-label>Settings</ion-label>
+      </ion-item>
+      <ion-item button routerLink="/help-faqs">
+        <ion-icon name="help-circle-outline" slot="start"></ion-icon>
+        <ion-label>Helps & FAQs</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+  <!-- Log Out Button at the Bottom -->
+  <ion-footer>
+    <ion-item button class="logout-button" lines="none" (click)="logout()">
+      <ion-icon name="log-out-outline" slot="start"></ion-icon>
+      <ion-label>Log Out</ion-label>
+    </ion-item>
+  </ion-footer>
+</ion-menu>
+
+<!-- Main Content Area -->
+<ion-header>
+  <!-- Top toolbar with menu, logo, account, and cart icons -->
+  <ion-toolbar color="white">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="home-menu"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>
+      <img src="https://www.pngmart.com/files/12/Shopee-Logo-Transparent-PNG.png" alt="Amazon Logo" class="logo" />
+    </ion-title>
+    <span class="logo-text">SS Mart</span>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon name="cart-outline"></ion-icon>
+        <ion-badge color="warning" slot="end" class="cart-badge">0</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <!-- Search bar with custom styling -->
+  <ion-toolbar color="light" class="search-toolbar">
+    <ion-searchbar
+      placeholder="Search in Amazon Pay Rewards Store"
+      class="custom-searchbar"
+      mode="ios"
+      [debounce]="500"
+    ></ion-searchbar>
+  </ion-toolbar>
+
+  <!-- Location information -->
+  <ion-toolbar color="white" class="location-toolbar">
+    <ion-icon name="location-outline" class="location-icon"></ion-icon>
+    <span class="location-text">Deliver to Shubham - Phagwara 144401</span>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scroll-y="true" id="home-content">
+  <!-- Carousel Section -->
+  <ion-row class="full-width">
+    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+          <img src="https://static.vecteezy.com/system/resources/previews/002/261/694/large_2x/sale-banner-template-design-limited-time-only-sale-up-to-50-percent-off-special-offer-promotion-discount-banner-vector.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>First Slide Label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
+            <button class="btn btn-primary">Learn More</button>
+          </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="https://c8.alamy.com/comp/2BWEH66/big-sale-discount-offer-promotion-web-app-banner-vector-illustration-2BWEH66.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Second Slide Label</h5>
+            <p>Some representative placeholder content for the second slide.</p>
+            <button class="btn btn-primary">Discover More</button>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://img.freepik.com/premium-psd/super-grocery-sale-web-banner_120329-268.jpg?w=2000" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Third Slide Label</h5>
+            <p>Some representative placeholder content for the third slide.</p>
+            <button class="btn btn-primary">Explore Now</button>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </ion-row>
+
+  <!-- Deals of the Day Section -->
+  <section class="deals-section">
+    <div class="section-header">
+      <h2>Deals of the Day</h2>
+      <p>Unbelievable deals for you</p>
+    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" *ngFor="let product of products">
+          <ion-card class="product-card">
+            <img [src]="product.image" alt="{{ product.name }}" />
+            <ion-card-content>
+              <h3>{{ product.name }}</h3>
+              <p>From ₹{{ product.price }}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
+
+  <!-- Winter Essentials Section -->
+  <section class="essentials-section">
+    <div class="section-header">
+      <h2>Winter Essentials</h2>
+      <p>Exclusive winter collection</p>
+    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" *ngFor="let winterProduct of winterProducts">
+          <ion-card class="product-card">
+            <img [src]="winterProduct.image" alt="{{ winterProduct.name }}" />
+            <ion-card-content>
+              <h3>{{ winterProduct.name }}</h3>
+              <p>From ₹{{ winterProduct.price }}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
+  
 </ion-content>

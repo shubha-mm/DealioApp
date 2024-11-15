@@ -1,0 +1,90 @@
+.create-account-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: #f0f0f5; /* Light background for the page */
+}
+
+/* Styling for the create account card with gradient background */
+.create-account-card {
+  width: 90%;
+  max-width: 350px;
+  background: linear-gradient(135deg, #FF7E5F, #feb47b);
+  border-radius: 15px;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+}
+
+/* Icon at the top of the card */
+.icon {
+  font-size: 60px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+/* Main heading for the create account title */
+h2 {
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Input fields with semi-transparent background and white text */
+.input-item {
+  margin-bottom: 15px;
+  --background: rgba(255, 255, 255, 0.3); /* Transparent input background */
+  --placeholder-color: #ffffff; /* White placeholder text */
+  --color: #ffffff; /* White input text */
+  border-radius: 5px;
+}
+
+/* Styling the ion-input element to have white text */
+ion-input {
+  color: #ffffff;
+}
+
+/* Primary create account button with white background and theme-colored text */
+.create-account-button {
+  --background: #ffffff;
+  color: #ff7e5f;
+  font-weight: bold;
+  margin-top: 10px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Terms and conditions styling with white background for the button text */
+.terms {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  /* Styling for the "Term and Condition" link to appear as a button */
+  .terms span {
+    color: #ff7e5f; /* Orange text */
+    background-color: transparent; /* Transparent background */
+    padding: 2px 4px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none; /* Remove underline */
+    margin-left: 4px; /* Space between checkbox text and button */
+  }
+/* Social login styling */
+.social-login {
+  color: #ffffff;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.social-login ion-icon {
+  font-size: 20px;
+  margin: 0 5px;
+  vertical-align: middle;
+}

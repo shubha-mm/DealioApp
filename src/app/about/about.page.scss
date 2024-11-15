@@ -1,0 +1,52 @@
+/* src/app/home/home.page.scss */
+
+.full-width {
+    width: 100%;
+  }
+  
+  #carouselExampleDark {
+    width: 100%;
+  }
+  
+  .carousel-inner .carousel-item img {
+    width: 100%;
+    height: 250px;
+  }
+  .carousel-caption .btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #007bff; /* Customize as needed */
+    border: none;
+  }
+ /* Styling for the search bar in the header */
+ion-searchbar {
+    --background: #f0f0f0; /* Light background color */
+    --border-radius: 10px; /* Rounded corners for a modern look */
+    --padding-start: 12px; /* Padding for the input text */
+    --padding-end: 12px; /* Padding for the input text */
+    --color: #333; /* Text color */
+    --placeholder-color: #aaa; /* Placeholder text color */
+    --icon-color: #777; /* Color of the search icon */
+    --clear-icon-color: #888; /* Color of the clear button (cross icon) */
+    height: 40px; /* Set the height of the search bar */
+    width: 220px; /* Set a fixed width or you can adjust as necessary */
+    font-size: 14px; /* Font size for input text */
+  }
+  
+  /* Optionally, add a hover effect for the search bar */
+  ion-searchbar:hover {
+    --background: #ffffff; /* Change the background color on hover */
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); /* Add shadow for hover effect */
+  }
+  
+  /* Adjusting the clear button */
+  ion-searchbar .searchbar-clear-icon {
+    font-size: 18px; /* Make the clear icon bigger */
+    padding-right: 10px; /* Adjust spacing for the clear icon */
+  }
+  
+  /* If you want to change the cart button icon color */
+  ion-button {
+    --color: #5645ad; /* Set the color for the cart icon */
+  }
+  
