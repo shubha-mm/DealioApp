@@ -3,16 +3,29 @@
     <div class="login-card">
       <ion-icon name="person-circle-outline" class="icon"></ion-icon>
       <h2>User Login</h2>
+      
+      <!-- Email/Phone Number Input -->
       <ion-item lines="none" class="input-item">
         <ion-input placeholder="Enter gmail or Phone number"></ion-input>
       </ion-item>
+      
+      <!-- Password Input -->
       <ion-item lines="none" class="input-item">
         <ion-input type="password" placeholder="Password"></ion-input>
       </ion-item>
-      <ion-button expand="block" class="login-button">Log in</ion-button>
-      <p class="forgot-password">Sign-up</p>
+      
+      <!-- Login Button -->
+      <ion-button expand="block" class="login-button" routerLink="/tabs/home">
+        Log in
+      </ion-button>
+      
+      <!-- Sign-Up Link -->
+      <p class="forgot-password" routerLink="/sign-up">
+        Sign-up
+      </p>
+      
       <!-- Google Sign-In Button -->
-      <ion-button expand="block" class="google-button">
+      <ion-button expand="block" class="google-button" routerLink="/google-auth">
         <ion-icon name="logo-google" slot="start"></ion-icon>
         Sign in with Google
       </ion-button>

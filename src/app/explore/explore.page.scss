@@ -1,0 +1,118 @@
+/***********************
+ * Explore Page Styles *
+ ***********************/
+
+/* General styles */
+ion-header {
+    --background: #f8f9fa;
+    --color: #333;
+  }
+  
+  /* Search bar styles */
+  ion-searchbar {
+    --background: #ffffff; /* Background color of the search bar */
+    --placeholder-color: #888; /* Placeholder text color */
+    margin: 10px 15px; /* Add padding around the search bar */
+    border-radius: 20px; /* Rounded corners for the search bar */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    border: 1px solid #e0e0e0; /* Light border for better definition */
+  }
+  
+  ion-searchbar::part(container) {
+    border-radius: 20px; /* Ensures the inner container is also rounded */
+    height: 45px; /* Set consistent height for the search bar */
+  }
+  
+  ion-searchbar::part(input) {
+    font-size: 14px; /* Adjust font size for the input text */
+    padding: 5px 10px; /* Padding inside the search bar */
+    color: #333; /* Input text color */
+  }
+  
+  ion-searchbar::part(cancel-button) {
+    font-size: 14px; /* Style the cancel button (if visible) */
+    color: #0078d4; /* Button color */
+  }
+  
+  /* Grid layout */
+  ion-grid {
+    padding: 10px;
+  }
+  
+  ion-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  ion-col {
+    margin-bottom: 10px;
+  }
+  
+  /* Card styles */
+  ion-card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  ion-card:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+  }
+  
+  ion-card img {
+    width: 100%;
+    height: auto;
+    max-height: 150px; /* Set max height to avoid too-large images */
+    object-fit: cover;
+  }
+  
+  ion-card-header {
+    background-color: #ffffff;
+    padding: 10px 0;
+  }
+  
+  ion-card-title {
+    font-size: 14px;
+    color: #333;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  ion-card-content {
+    padding: 5px 10px;
+    background-color: #fafafa;
+    font-size: 14px;
+  }
+  
+  /* Price and discount styles */
+  ion-card-content p {
+    margin: 5px 0;
+  }
+  
+  strong {
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .original-price {
+    text-decoration: line-through;
+    color: gray;
+    font-size: 12px;
+    margin-left: 5px;
+  }
+  
+  /* Responsive styling for smaller devices */
+  @media (max-width: 600px) {
+    ion-col {
+      flex: 0 0 48%; /* Adjust column size to fit 2 per row */
+    }
+  }
+  
+  @media (max-width: 400px) {
+    ion-col {
+      flex: 0 0 100%; /* Adjust column size to fit 1 per row */
+    }
+  }
+  

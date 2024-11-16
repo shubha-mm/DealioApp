@@ -1,22 +1,16 @@
-// src/app/app.module.ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicModule } from '@ionic/angular';
-import { AppComponent } from './app.component';
+import { RouteReuseStrategy } from '@angular/router';
+
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SharedModule } from './shared/shared/shared.module';
+import { AppComponent } from './app.component';
+import { TabsComponent } from './tabs/tabs.component'; // Import the TabsComponent
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(),
-    AppRoutingModule,
-    NgbModule,
-    SharedModule // Import SharedModule here
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [AppComponent, TabsComponent], // Add TabsComponent here
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

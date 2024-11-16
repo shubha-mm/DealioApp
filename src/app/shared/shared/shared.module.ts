@@ -1,14 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular'; // Import IonicModule
-import { FooterComponent } from 'src/app/footer/footer.component';
+import { IonicModule } from '@ionic/angular';
+import { TabsComponent } from '../tabs/tabs.component';
 
 @NgModule({
-  declarations: [FooterComponent],
-  imports: [
-    CommonModule,
-    IonicModule // Add IonicModule here to enable Ionic components
-  ],
-  exports: [FooterComponent]
+  declarations: [TabsComponent],
+  imports: [CommonModule, IonicModule],
+  exports: [TabsComponent],
 })
 export class SharedModule {}

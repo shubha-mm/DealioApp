@@ -13,8 +13,8 @@ import { ExplorePage } from './explore.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ExplorePageRoutingModule
+    ExplorePageRoutingModule, // Ensure proper routing is set up
   ],
-  declarations: [ExplorePage]
+  declarations: [ExplorePage],
 })
 export class ExplorePageModule {}
