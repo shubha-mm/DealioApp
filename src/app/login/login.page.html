@@ -1,34 +1,47 @@
-<ion-content>
-  <div class="login-wrapper">
-    <div class="login-card">
-      <ion-icon name="person-circle-outline" class="icon"></ion-icon>
-      <h2>User Login</h2>
-      
-      <!-- Email/Phone Number Input -->
-      <ion-item lines="none" class="input-item">
-        <ion-input placeholder="Enter gmail or Phone number"></ion-input>
-      </ion-item>
-      
-      <!-- Password Input -->
-      <ion-item lines="none" class="input-item">
-        <ion-input type="password" placeholder="Password"></ion-input>
-      </ion-item>
-      
-      <!-- Login Button -->
-      <ion-button expand="block" class="login-button" routerLink="/tabs/home">
-        Log in
-      </ion-button>
-      
-      <!-- Sign-Up Link -->
-      <p class="forgot-password" routerLink="/sign-up">
-        Sign-up
-      </p>
-      
-      <!-- Google Sign-In Button -->
-      <ion-button expand="block" class="google-button" routerLink="/google-auth">
-        <ion-icon name="logo-google" slot="start"></ion-icon>
-        Sign in with Google
-      </ion-button>
-    </div>
-  </div>
+
+<ion-content class="custom-content">
+  <ion-card class="login-card">
+   <ion-card-header class="card-header">
+     <ion-card-title>Login</ion-card-title>
+   </ion-card-header>
+
+   <ion-card-content>
+     <ion-item class="custom-item">
+
+       <ion-label position="floating" required>Email</ion-label>
+       <ion-input [(ngModel)]="email" type="email"></ion-input>
+     </ion-item>
+
+     <ion-item class="custom-item">
+       <ion-label position="floating" required>Password</ion-label>
+       <ion-input [(ngModel)]="password" type="password"></ion-input>
+     </ion-item>
+
+     <ion-button expand="full" (click)="login()" class="login-button" required>Login</ion-button>
+
+     <div class="signup-container">
+       <p>Create New Account?
+         <a routerLink="/signup" class="signup-link">Sign Up</a>
+       </p>
+     </div>
+
+     <ion-button expand="full" class="google-login-button" (click)="googleLogin()">
+       <ion-icon name="logo-google" slot="start"></ion-icon>
+       Login with Google
+     </ion-button>
+
+     <ion-button expand="full" class="github-login-button" (click)="githubLogin()">
+      <ion-icon name="logo-github" slot="start"></ion-icon>
+      Login with GitHub
+    </ion-button>
+
+
+    <ion-button expand="full" class="reset-password-button" (click)="resetPassword()">
+     Reset Password
+    </ion-button>
+
+   </ion-card-content>
+ </ion-card>
+
+
 </ion-content>

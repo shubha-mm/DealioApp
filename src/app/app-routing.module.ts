@@ -50,7 +50,7 @@ const routes: Routes = [
       import('./login/login.module').then((m) => m.LoginPageModule),
   },
   {
-    path: 'sign-up',
+    path: 'signup',
     loadChildren: () =>
       import('./sign-up/sign-up.module').then((m) => m.SignUpPageModule),
   },
