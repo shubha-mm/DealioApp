@@ -2,36 +2,41 @@
  * Explore Page Styles *
  ***********************/
 
-/* General styles */
-ion-header {
-    --background: #f8f9fa;
-    --color: #333;
+/* Gradient header styles */
+.gradient-header {
+    background: linear-gradient(45deg, #ffa17f, #00223e); /* Gradient background */
+    text-align: center;
+    padding: 20px 15px;
+    color: white;
+    font-family: 'Arial', sans-serif;
   }
   
-  /* Search bar styles */
+  .gradient-header h1 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  /* Search bar container */
+  .search-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  
   ion-searchbar {
-    --background: #ffffff; /* Background color of the search bar */
-    --placeholder-color: #888; /* Placeholder text color */
-    margin: 10px 15px; /* Add padding around the search bar */
-    border-radius: 20px; /* Rounded corners for the search bar */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
-    border: 1px solid #e0e0e0; /* Light border for better definition */
+    --background: #ffffff;
+    --placeholder-color: #aaa;
+    width: 90%;
+    max-width: 400px;
+    height: 40px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Add shadow for a floating effect */
   }
   
   ion-searchbar::part(container) {
-    border-radius: 20px; /* Ensures the inner container is also rounded */
-    height: 45px; /* Set consistent height for the search bar */
-  }
-  
-  ion-searchbar::part(input) {
-    font-size: 14px; /* Adjust font size for the input text */
-    padding: 5px 10px; /* Padding inside the search bar */
-    color: #333; /* Input text color */
-  }
-  
-  ion-searchbar::part(cancel-button) {
-    font-size: 14px; /* Style the cancel button (if visible) */
-    color: #0078d4; /* Button color */
+    border-radius: 8px;
   }
   
   /* Grid layout */
@@ -58,13 +63,13 @@ ion-header {
   }
   
   ion-card:hover {
-    transform: translateY(-5px); /* Slight lift effect on hover */
+    transform: translateY(-5px);
   }
   
   ion-card img {
     width: 100%;
     height: auto;
-    max-height: 150px; /* Set max height to avoid too-large images */
+    max-height: 150px;
     object-fit: cover;
   }
   
@@ -106,13 +111,13 @@ ion-header {
   /* Responsive styling for smaller devices */
   @media (max-width: 600px) {
     ion-col {
-      flex: 0 0 48%; /* Adjust column size to fit 2 per row */
+      flex: 0 0 48%;
     }
   }
   
   @media (max-width: 400px) {
     ion-col {
-      flex: 0 0 100%; /* Adjust column size to fit 1 per row */
+      flex: 0 0 100%;
     }
   }
   
