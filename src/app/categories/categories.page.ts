@@ -6,73 +6,33 @@ import { Component } from '@angular/core';
   styleUrls: ['./categories.page.scss'],
 })
 export class CategoriesPage {
-  // Original data
-  sidebarCategories = [
-    { name: 'Fashion', icon: 'assets/icons/fashion.png' },
-    { name: 'Appliances', icon: 'assets/icons/appliances.png' },
-    { name: 'Mobiles', icon: 'assets/icons/mobiles.png' },
+  searchTerm: string = '';
+
+  // Example categories
+  categories = [
     { name: 'Electronics', icon: 'assets/icons/electronics.png' },
-    { name: 'Smart Gadgets', icon: 'assets/icons/smart-gadgets.png' },
-    { name: 'Home', icon: 'assets/icons/home.png' },
-    { name: 'Beauty & Personal Care', icon: 'assets/icons/beauty.png' },
-    { name: 'Toys, Baby, Books...', icon: 'assets/icons/toys.png' },
+    { name: 'Clothing', icon: 'assets/icons/clothing.png' },
+    { name: 'Books', icon: 'assets/icons/books.png' },
+    { name: 'Home Decor', icon: 'assets/icons/home-decor.png' },
+    { name: 'Toys', icon: 'assets/icons/toys.png' },
+    { name: 'Shoes', icon: 'assets/icons/shoes.png' },
+    { name: 'Gadgets', icon: 'assets/icons/gadgets.png' },
+    { name: 'Beauty', icon: 'assets/icons/beauty.png' },
+    { name: 'Sports', icon: 'assets/icons/sports.png' },
+    { name: 'Appliances', icon: 'assets/icons/appliances.png' },
+    { name: 'Groceries', icon: 'assets/icons/groceries.png' },
+    { name: 'Jewelry', icon: 'assets/icons/jewelry.png' },
+    // Add more categories as needed
   ];
 
-  popularStores = [
-    { name: "Children's Day", icon: 'assets/icons/children-day.png' },
-    { name: 'Shaadi Specials', icon: 'assets/icons/shaadi-specials.png' },
-    { name: 'Pocket Bazaar', icon: 'assets/icons/pocket-bazaar.png' },
-  ];
+  // Filtered categories for search
+  filteredCategories = [...this.categories];
 
-  flipkartFeatures = [
-    { name: 'Flipkart Green', icon: 'assets/icons/flipkart-green.png' },
-    { name: 'International Brands', icon: 'assets/icons/international-brands.png' },
-    { name: 'Luggage & Accessories', icon: 'assets/icons/luggage.png' },
-    { name: 'Flipkart Samarth', icon: 'assets/icons/samarth.png' },
-    { name: 'Flipkart Originals', icon: 'assets/icons/originals.png' },
-    { name: 'Smart Living', icon: 'assets/icons/smart-living.png' },
-    { name: 'Next Gen Brands', icon: 'assets/icons/next-gen.png' },
-  ];
-
-  triedItems = [
-    { name: 'Flash', icon: 'assets/icons/flash.png' },
-    { name: 'Gift Cards', icon: 'assets/icons/gift-cards.png' },
-    { name: 'Payments', icon: 'assets/icons/payments.png' },
-  ];
-
-  // Filtered data (to be displayed)
-  filteredSidebarCategories = [...this.sidebarCategories];
-  filteredPopularStores = [...this.popularStores];
-  filteredFlipkartFeatures = [...this.flipkartFeatures];
-  filteredTriedItems = [...this.triedItems];
-
-  constructor() {}
-
-  // Handle search input
-  onSearch(event: any) {
-    const query = event.target.value.toLowerCase();
-
-    // Filter each section based on the query
-    this.filteredSidebarCategories = this.sidebarCategories.filter((item) =>
-      item.name.toLowerCase().includes(query)
+  // Filter logic for search bar
+  filterCategories() {
+    const search = this.searchTerm.toLowerCase();
+    this.filteredCategories = this.categories.filter((category) =>
+      category.name.toLowerCase().includes(search)
     );
-
-    this.filteredPopularStores = this.popularStores.filter((item) =>
-      item.name.toLowerCase().includes(query)
-    );
-
-    this.filteredFlipkartFeatures = this.flipkartFeatures.filter((item) =>
-      item.name.toLowerCase().includes(query)
-    );
-
-    this.filteredTriedItems = this.triedItems.filter((item) =>
-      item.name.toLowerCase().includes(query)
-    );
-  }
-
-  // Placeholder function for navigation
-  navigateToCategory(categoryName: string) {
-    console.log(`Navigating to category: ${categoryName}`);
-    // Add navigation logic if needed
   }
 }

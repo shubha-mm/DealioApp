@@ -1,59 +1,23 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>All Categories</ion-title>
+  <div class="gradient-header">
+    <h1>All Categories</h1>
     <ion-searchbar
       placeholder="Search..."
-      (ionInput)="onSearch($event)"
-      debounce="500">
-    </ion-searchbar>
-  </ion-toolbar>
+      [(ngModel)]="searchTerm"
+      (ionInput)="filterCategories()"
+    ></ion-searchbar>
+  </div>
 </ion-header>
 
 <ion-content>
   <ion-grid>
     <ion-row>
-      <!-- Sidebar -->
-      <ion-col size="3" class="sidebar">
-        <div *ngFor="let category of filteredSidebarCategories" class="sidebar-item" (click)="navigateToCategory(category.name)">
-          <img [src]="category.icon" alt="{{ category.name }}">
+      <!-- Category Items -->
+      <ion-col size="6" *ngFor="let category of filteredCategories">
+        <div class="category-card">
+          <img [src]="category.icon" alt="{{ category.name }}" />
           <p>{{ category.name }}</p>
         </div>
-      </ion-col>
-
-      <!-- Main Content -->
-      <ion-col size="9">
-        <!-- Popular Store -->
-        <h3 class="section-title">Popular Store</h3>
-        <ion-row class="horizontal-scroll">
-          <ion-col size="4" *ngFor="let store of filteredPopularStores">
-            <div class="circle-container">
-              <img [src]="store.icon" alt="{{ store.name }}">
-            </div>
-            <p>{{ store.name }}</p>
-          </ion-col>
-        </ion-row>
-
-        <!-- More on Flipkart -->
-        <h3 class="section-title">More on Flipkart</h3>
-        <ion-row>
-          <ion-col size="4" *ngFor="let feature of filteredFlipkartFeatures">
-            <div class="circle-container">
-              <img [src]="feature.icon" alt="{{ feature.name }}">
-            </div>
-            <p>{{ feature.name }}</p>
-          </ion-col>
-        </ion-row>
-
-        <!-- Have You Tried -->
-        <h3 class="section-title">Have you tried?</h3>
-        <ion-row class="horizontal-scroll">
-          <ion-col size="4" *ngFor="let item of filteredTriedItems">
-            <div class="circle-container">
-              <img [src]="item.icon" alt="{{ item.name }}">
-            </div>
-            <p>{{ item.name }}</p>
-          </ion-col>
-        </ion-row>
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -1,12 +1,14 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Explore</ion-title>
-    <ion-searchbar
-      [(ngModel)]="searchTerm"
-      placeholder="Search items"
-      (ionInput)="filterItems()"
-    ></ion-searchbar>
-  </ion-toolbar>
+  <div class="gradient-header">
+    <h1>Explore</h1>
+    <div class="search-container">
+      <ion-searchbar
+        [(ngModel)]="searchTerm"
+        placeholder="Search..."
+        (ionInput)="filterItems()"
+      ></ion-searchbar>
+    </div>
+  </div>
 </ion-header>
 
 <ion-content>
