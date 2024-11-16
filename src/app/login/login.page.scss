@@ -1,75 +1,137 @@
+/* Wrapper to center the card and set background */
 .login-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    background-color: #f0f0f5; // light background color for contrast
-  }
-  
-  .login-card {
-    width: 90%;
-    max-width: 350px;
-    background: linear-gradient(135deg, #FF7E5F, #feb47b); // gradient similar to the original
-    border-radius: 15px;
-    padding: 30px 20px;
-    text-align: center;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .icon {
-    font-size: 60px;
-    color: #ffffff;
-    margin-bottom: 10px;
-  }
-  
-  h2 {
-    color: #ffffff;
-    font-weight: 600;
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .input-item {
-    margin-bottom: 15px;
-    --background: rgba(255, 255, 255, 0.3); // transparent input background
-    --placeholder-color: #ffffff;
-    --color: #ffffff; // input text color
-    border-radius: 5px;
-  }
-  
-  ion-input {
-    color: #ffffff; // ensures input text is white
-  }
-  
-  .login-button {
-    --background: #ffffff;
-    color: #ff7e5f;
-    font-weight: bold;
-    margin-top: 10px;
-    border-radius: 8px;
-    text-transform: uppercase;
-  }
-  
-  .forgot-password {
-    color: #ffffff;
-    margin-top: 15px;
-    font-size: 14px;
-    cursor: pointer;
-  }
-  
-  .create-account {
-    color: #ffffff;
-    margin-top: 20px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  .google-button {
-    --background: #ffffff;
-    color: #ff7e5f;
-    font-weight: bold;
-    margin-top: 10px;
-    border-radius: 8px;
-    text-transform: uppercase;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height for centering */
+  background-color: #f0f0f5; /* Light background color for contrast */
+}
+
+/* Styling the login card */
+.login-card {
+  width: 90%;
+  align-items: center;
+  max-width: 350px;
+  background: linear-gradient(135deg, #FF7E5F, #feb47b); /* Gradient background */
+  border-radius: 15px;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow around the card */
+}
+
+/* Google Login Button Styling */
+.google-login-button {
+  --background: #ffffff;
+  color: #ff7e5f;
+  font-weight: bold;
+  margin-top: 10px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Input styling for email and password fields */
+.custom-item {
+  margin-bottom: 15px;
+}
+
+ion-input {
+  --background: rgba(255, 255, 255, 0.3); /* Transparent background */
+  --placeholder-color: #ffffff; /* White placeholder color */
+  --color: #ffffff; /* Input text color */
+  border-radius: 5px; /* Rounded corners for input */
+}
+
+/* Login Button Styling */
+.login-button {
+  --background: #ffffff;
+  color: #ff7e5f;
+  font-weight: bold;
+  margin-top: 10px;
+  border-radius: 8px;
+  text-transform: uppercase;
+}
+
+/* Reset Password Button Styling */
+.reset-password-button {
+  --background: transparent;
+  color: #ffffff;
+  font-size: 14px;
+  margin-top: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+}
+
+/* Sign Up link styling */
+.signup-container {
+  margin-top: 15px;
+}
+
+.signup-link {
+  color: #ff7e5f;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Text Styling */
+ion-card-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+/* Optional: Styling for the logo or icon (if used in the page) */
+.icon {
+  font-size: 60px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+h2 {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Forgot password text */
+.forgot-password {
+  color: #ffffff;
+  margin-top: 15px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.create-account {
+  color: #ffffff;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.custom-item {
+  margin-bottom: 15px;
+}
+
+ion-input {
+  --background: rgba(255, 255, 255, 0.3); /* Transparent background */
+  --placeholder-color: #ffffff; /* White placeholder color */
+  --color: #000000; /* Black text color when typing */
+  border-radius: 5px; /* Rounded corners for input */
+}
+
+/* When input is focused, ensure placeholder color stays white */
+ion-input:focus {
+  --placeholder-color: #ffffff; /* White placeholder text on focus */
+}
+
+/* Make sure when typing, the text color is black */
+ion-input input {
+  color: #000000; /* Black color for the text being typed */
+}
+
+/* Ensure that the input text color stays black even on focus */
+ion-input:focus input {
+  color: #000000; /* Keep black text color on focus */
+}

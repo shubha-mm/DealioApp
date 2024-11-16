@@ -17,14 +17,18 @@
       </ion-item>
       <ion-item lines="none">
         <ion-checkbox slot="start" color="primary"></ion-checkbox>
-        <label class="terms">By creating an account you agree to our <span>Term and Condition</span></label>
+        <label class="terms" style="color: black;">By creating an account you agree to our <span>Term and Condition</span></label>
       </ion-item>
-      <ion-button expand="block" class="create-account-button">Log in</ion-button>
-      <p class="social-login">Get start with 
-        <ion-icon name="logo-google"></ion-icon>
-        <ion-icon name="logo-facebook"></ion-icon>
-        <ion-icon name="logo-twitter"></ion-icon>
-      </p>
+      <ion-button expand="block" (click)="signup()" class="create-account-button">Signup</ion-button>
+      <ion-button expand="full" class="google-login-button" (click)="googleLogin()">
+        <ion-icon name="logo-google" slot="start"></ion-icon>
+        Login with Google
+      </ion-button>
+
+      <ion-button expand="full" class="github-login-button" (click)="githubLogin()">
+        <ion-icon name="logo-github" slot="start"></ion-icon>
+        Login with GitHub
+      </ion-button>
     </div>
   </div>
 </ion-content>
