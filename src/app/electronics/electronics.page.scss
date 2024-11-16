@@ -1,0 +1,75 @@
+/***********************
+ * Electronics Page Styles *
+ ***********************/
+
+/* Header Toolbar */
+ion-toolbar {
+    --background: #ff9900; /* Orange header background */
+    --color: white; /* Text color */
+  }
+  
+  /* Search Bar */
+  ion-searchbar {
+    --background: #ffffff; /* White background */
+    --placeholder-color: #aaa; /* Placeholder text color */
+    --color: #333; /* Input text color */
+    margin: 10px auto;
+    width: 90%;
+    max-width: 400px;
+    height: 45px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1); /* Shadow for floating look */
+  }
+  
+  /* Product Cards */
+  ion-card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  ion-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+  }
+  
+  ion-card img {
+    width: 100%;
+    height: auto;
+    max-height: 150px; /* Avoid overly tall images */
+    object-fit: cover;
+  }
+  
+  ion-card-header {
+    text-align: center;
+  }
+  
+  ion-card-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  ion-card-content {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  ion-card-content p {
+    margin: 5px 0;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    ion-col {
+      flex: 0 0 48%; /* 2 cards per row on small screens */
+    }
+  }
+  
+  @media (max-width: 400px) {
+    ion-col {
+      flex: 0 0 100%; /* 1 card per row on very small screens */
+    }
+  }
+  
