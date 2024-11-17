@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
-import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -9,11 +9,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CartPage implements OnInit {
   cartItems: any[] = [];
+  totalPrice: number = 0; // Variable to track the total price of the cart
 
-  // Variable to track the total price of the cart
-  totalPrice: number = 0;
-
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private router: Router) {}
 
   ngOnInit() {
     // Retrieve cart items when the component initializes
@@ -36,22 +34,26 @@ export class CartPage implements OnInit {
   }
 
   // Remove item from cart
-removeItem(item: any) {
-  // Remove item from CartService
-  this.cartService.removeItem(item);
+  removeItem(item: any) {
+    // Remove item from CartService
+    this.cartService.removeItem(item);
 
-  // Directly update the cartItems array to reflect the removal
-  this.cartItems = this.cartItems.filter(cartItem => cartItem !== item);
+    // Directly update the cartItems array to reflect the removal
+    this.cartItems = this.cartItems.filter(cartItem => cartItem !== item);
 
-  // Recalculate the total price after removing the item
-  this.calculateTotalPrice();
-}
-
+    // Recalculate the total price after removing the item
+    this.calculateTotalPrice();
+  }
 
   // Calculate the total price of items in the cart
   calculateTotalPrice() {
     this.totalPrice = this.cartItems.reduce((total, item) => {
-      return total + (item.price * item.quantity);
+      return total + item.price * item.quantity;
     }, 0);
+  }
+
+  // Navigate to the checkout page
+  proceedToCheckout() {
+    this.router.navigate(['/checkout']);
   }
 }

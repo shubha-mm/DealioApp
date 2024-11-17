@@ -5,11 +5,11 @@ import { TabsComponent } from './tabs/tabs.component'; // Import TabsComponent
 import { AuthGuard } from './guards/auth.guard'; // Import AuthGuard
 
 const routes: Routes = [
-  // Redirect root path to Categories
+  // Redirect root path to login
   {
     path: '',
-    redirectTo: 'login', // Redirect to Categories Page
-    pathMatch: 'full',
+    redirectTo: 'login',
+    pathMatch: 'full', // Ensure 'pathMatch' is set to 'full'
   },
 
   // Tabs and their child routes
@@ -107,11 +107,18 @@ const routes: Routes = [
     loadChildren: () =>
       import('./razorpay-payment/razorpay-payment.module').then((m) => m.RazorpayPaymentPageModule),
   },
+  {
+    path: 'checkout',
+    loadChildren: () =>
+      import('./checkout/checkout.module').then((m) => m.CheckoutPageModule),
+  },
+  
 
   // Wildcard route for undefined paths
   {
-    path: '',
-    redirectTo: 'tabs/categories', // Redirect undefined routes to Categories
+    path: '**', // Wildcard for undefined routes
+    redirectTo: 'tabs/categories',
+    pathMatch: 'full', // Ensure 'pathMatch' is set to 'full'
   },
 ];
 
@@ -121,4 +128,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {}
