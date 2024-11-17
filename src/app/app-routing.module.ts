@@ -78,6 +78,7 @@ const routes: Routes = [
     path: 'beauty',
     loadChildren: () => import('./beauty/beauty.module').then( m => m.BeautyPageModule)
   },
+
 ];
 
 @NgModule({
