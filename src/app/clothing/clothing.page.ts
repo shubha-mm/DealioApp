@@ -7,9 +7,9 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./clothing.page.scss'],
 })
 export class ClothingPage {
-  searchTerm: string = ''; // Search term from the search bar
+  searchTerm: string = '';
 
-  // Sample product list for clothing with 10 items
+
   products = [
     {
       name: 'Men’s T-Shirt',
@@ -63,12 +63,12 @@ export class ClothingPage {
     },
   ];
 
-  // Filtered Products Array
+
   filteredProducts = [...this.products];
 
   constructor(private navCtrl: NavController) {}
 
-  // Filter clothing products based on the search term
+  
   filterProducts() {
     const search = this.searchTerm.toLowerCase();
     this.filteredProducts = this.products.filter((product) =>

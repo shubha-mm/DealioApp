@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./categories.page.scss'],
 })
 export class CategoriesPage {
-  searchTerm: string = ''; // Search term for filtering categories
+  searchTerm: string = '';
 
   // Categories with Ionicons
   categories = [
@@ -29,4 +29,12 @@ export class CategoriesPage {
       category.name.toLowerCase().includes(search)
     );
   }
+<<<<<<< HEAD
+=======
+
+
+  goBack() {
+    this.navCtrl.navigateBack('/categories'); 
+  }
+>>>>>>> 15864ea37e68eb3d827c95e664278c4d6dba0b74
 }

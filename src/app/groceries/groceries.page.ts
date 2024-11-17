@@ -7,9 +7,9 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./groceries.page.scss'],
 })
 export class GroceriesPage {
-  searchTerm: string = ''; // Search term from the search bar
+  searchTerm: string = '';
 
-  // Sample product list for groceries with 10 items
+
   products = [
     {
       name: 'Rice (1kg)',
@@ -63,12 +63,12 @@ export class GroceriesPage {
     },
   ];
 
-  // Filtered Products Array
+
   filteredProducts = [...this.products];
 
   constructor(private navCtrl: NavController) {}
 
-  // Filter grocery products based on the search term
+
   filterProducts() {
     const search = this.searchTerm.toLowerCase();
     this.filteredProducts = this.products.filter((product) =>
@@ -76,8 +76,8 @@ export class GroceriesPage {
     );
   }
 
-  // Navigate back to the categories page
+
   goBack() {
-    this.navCtrl.navigateBack('/categories'); // Replace with your fallback route
+    this.navCtrl.navigateBack('/categories'); 
   }
 }

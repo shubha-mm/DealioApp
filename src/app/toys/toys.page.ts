@@ -7,9 +7,13 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./toys.page.scss'],
 })
 export class ToysPage {
+<<<<<<< HEAD
   searchTerm: string = '';
 
  
+=======
+  searchTerm: string = ''; 
+>>>>>>> 15864ea37e68eb3d827c95e664278c4d6dba0b74
   products = [
     {
       name: 'Action Figure',
