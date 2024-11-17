@@ -70,26 +70,4 @@
     scrollbar-color: #fff #fff;
   }
 
-  /* Light Mode */
-body.light-mode {
-  --ion-background-color: #ffffff;
-  --ion-text-color: #000000;
-  --ion-toolbar-background: #ffffff;
-  --ion-toolbar-color: #000000;
-  --ion-item-background: #f4f4f4;
-  --ion-item-color: #000000;
-  --ion-button-background: #ffffff;
-  --ion-button-color: #000000;
-}
-
-/* Dark Mode */
-body.dark-mode {
-  --ion-background-color: #121212;
-  --ion-text-color: #ffffff;
-  --ion-toolbar-background: #1f1f1f;
-  --ion-toolbar-color: #ffffff;
-  --ion-item-background: #333333;
-  --ion-item-color: #ffffff;
-  --ion-button-background: #555555;
-  --ion-button-color: #ffffff;
-}
+ 

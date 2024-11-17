@@ -93,16 +93,29 @@ ion-searchbar:hover {
   font-size: 1.4rem;
   color: #333;
 }
+
 ion-button {
   --padding-start: 0;
   --padding-end: 0;
+  --background: #fff; /* Add to Cart button background */
+  --color: black; /* Text color for Add to Cart */
+  --border-radius: 8px; /* Optional rounded corners */
+  --box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+ion-button:hover {
+  --background: #ffffff; /* Hover background color */
+  --color: #ff9900; /* Hover text color */
+  --box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
 }
 
 ion-icon {
   font-size: 30px;
   color: var(--ion-text-color);
 }
-
 
 .section-header p {
   font-size: 0.9rem;
@@ -115,20 +128,27 @@ ion-icon {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   background-color: #ffffff;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.3s ease-in-out;
+}
 
-  &:hover {
-    transform: translateY(-5px); /* Lift card on hover */
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
-  }
+.product-card:hover {
+  transform: translateY(-5px); /* Lift card on hover */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+  background-color: #ff9900; /* Card hover background */
+  color: #ffffff; /* Text color on hover */
 }
 
 .product-card img {
   width: 100%;
-  height: 140px; /* Adjusted height for less zoom */
+  height: 140px; /* Adjusted height for consistent sizing */
   object-fit: contain;
   padding: 8px;
   background-color: #f9f9f9;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.product-card:hover img {
+  opacity: 0.9; /* Slight dimming effect on hover */
 }
 
 .product-card h3 {
@@ -140,6 +160,11 @@ ion-icon {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition: color 0.3s ease-in-out;
+}
+
+.product-card:hover h3 {
+  color: #ffffff; /* Change title color on hover */
 }
 
 .product-card p {
@@ -148,161 +173,9 @@ ion-icon {
   font-weight: bold;
   text-align: center;
   margin-bottom: 8px;
+  transition: color 0.3s ease-in-out;
 }
 
-/* Sidebar Menu Styling */
-ion-menu {
-  --width: 80%;
-
-  .profile-section {
-    padding: 16px;
-    background: #ff6b6b;
-    color:black;
-    display: flex;
-    align-items: center;
-    background-color: white;
-
-    h2 {
-      font-size: 1.2rem;
-      margin: 0;
-    }
-
-    p {
-      font-size: 0.9rem;
-      margin: 0;
-      color: #ffffffa8;
-    }
-
-    ion-icon {
-      font-size: 1.5rem;
-      color: white;
-      cursor: pointer;
-    }
-  }
-
-  .menu-content {
-    background: #f3f3f3;
-    overflow-y: auto;
-  }
-
-  /* Scrollbar Styles for Menu List */
-  .menu-content::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  .menu-content::-webkit-scrollbar-track {
-    background: #ff6b6b;
-    border-radius: 8px;
-  }
-
-  .menu-content::-webkit-scrollbar-thumb {
-    background-color: #ff8a65;
-    border-radius: 8px;
-    border: 2px solid #ffccd5;
-  }
-
-  .menu-content::-webkit-scrollbar-thumb:hover {
-    background-color: #ff6b6b;
-  }
-
-  ion-list {
-    ion-item {
-      --background: transparent;
-      --color: #333;
-      font-size: 1rem;
-      padding: 12px 16px;
-
-      ion-icon {
-        font-size: 1.3rem;
-        color: #ff6b6b;
-      }
-
-      &:hover {
-        --background: #e6e6e6;
-      }
-    }
-  }
-
-  .logout-button {
-    background:#ff9900;
-    color: black;
-    --ripple-color: #ff9900;
-
-    ion-icon {
-      color: #ff9900;
-    }
-
-    ion-label {
-      font-weight: bold;
-    }
-  }
-}
-
-/* Bottom Tab Bar Styling */
-ion-tab-bar {
-  --background: #ffffff;
-  --color: #8c8c8c;
-  --color-selected: #ff9900;
-  border-top: 1px solid #e0e0e0;
-  padding-top: 4px;
-}
-
-ion-tab-button {
-  --ripple-color: #ff9900;
-  font-size: 0.85rem;
-}
-
-ion-icon {
-  font-size: 1.2rem;
-}
-
-ion-tabs {
-  margin-top: 0;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  z-index: 1;
-}
-
-ion-content {
-  margin-bottom: 56px; /* Adjust margin for bottom tab bar */
-}
-
-/* Responsive Adjustments */
-@media (max-width: 150px) {
-  .carousel-inner .carousel-item img {
-    height: 180px;
-  }
-
-  .product-card img {
-    height: 100px;
-  }
-
-  .product-card h3 {
-    font-size: 0.9rem;
-  }
-
-  .product-card p {
-    font-size: 0.8rem;
-  }
-}
-/* Logo container to align logo and text horizontally */
-.logo-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Logo styling */
-.logo {
-  height: 24px; /* Adjust the size as needed */
- /* Space between logo and text */
-}
-
-/* Text styling with italic font */
-.logo-text {
-  font-size: 1rem; /* Adjust font size */
-  font-weight: bold;
-  font-style: italic; /* Make the text italic */
-  color: #ff8a65; /* Adjust color to match your theme */
+.product-card:hover p {
+  color: #ffffff; /* Change paragraph color on hover */
 }
