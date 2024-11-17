@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-declare var Razorpay: any;
+
+declare var Razorpay: any; // Declare Razorpay to be used globally after script is loaded
 
 interface RazorpayOrder {
   id: string; // Order ID
@@ -22,21 +23,64 @@ export class CheckoutPage implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
+    this.loadCart();
     this.calculateTotal();
   }
 
+  /**
+   * Load cart items from local storage.
+   */
+  loadCart() {
+    try {
+      this.cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
+    } catch (error) {
+      console.error('Error loading cart from localStorage:', error);
+      this.cartItems = [];
+    }
+  }
+
+  /**
+   * Calculate total amount for items in the cart.
+   */
   calculateTotal() {
     this.totalAmount = this.cartItems.reduce((sum, item) => {
       return sum + item.price * item.quantity;
     }, 0);
   }
 
-  async makePayment() {
-    try {
-      console.log('Initiating payment with total amount:', this.totalAmount);
+  /**
+   * Dynamically load the Razorpay script if not already loaded.
+   */
+  loadRazorpayScript(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      // Check if Razorpay script is already loaded
+      if (typeof Razorpay === 'undefined') {
+        const script = document.createElement('script');
+        script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+        script.onload = () => resolve(); // Resolve promise once script is loaded
+        script.onerror = () => reject('Razorpay SDK failed to load');
+        document.body.appendChild(script);
+      } else {
+        resolve(); // Razorpay is already loaded
+      }
+    });
+  }
 
-      // Call the backend to create a Razorpay order
+  /**
+   * Initiate the Razorpay payment process.
+   */
+  async makePayment() {
+    if (this.totalAmount <= 0) {
+      alert('Your cart is empty. Add items to proceed.');
+      return;
+    }
+
+    try {
+      // Load the Razorpay script dynamically
+      await this.loadRazorpayScript();
+      console.log('Razorpay script loaded successfully.');
+
+      // Create Razorpay order from backend
       const order = await this.http
         .post<RazorpayOrder>('http://localhost:3000/create-order', {
           amount: this.totalAmount * 100, // Convert to paise
@@ -44,7 +88,6 @@ export class CheckoutPage implements OnInit {
         })
         .toPromise();
 
-      // Ensure order is valid
       if (!order || !order.id) {
         throw new Error('Invalid Razorpay order response');
       }
@@ -53,23 +96,23 @@ export class CheckoutPage implements OnInit {
 
       // Razorpay payment options
       const options = {
-        key: 'YOUR_RAZORPAY_KEY_ID', // Replace with your Razorpay Key ID
+        key: 'rzp_live_NnJbR7ipdHTQ7N', // Replace with your Razorpay Key ID
         amount: order.amount, // Amount from backend
         currency: order.currency, // Currency from backend
-        name: 'Your App Name',
+        name: 'Your App Name', // Replace with your app's name
         description: 'Order Payment',
         order_id: order.id, // Order ID from backend
         handler: (response: any) => {
           console.log('Payment successful with response:', response);
-          this.completeOrder();
+          this.completeOrder(response);
         },
         prefill: {
-          name: 'Customer Name',
-          email: 'customer@example.com',
-          contact: '9999999999',
+          name: 'Customer Name', // Replace with dynamic customer name
+          email: 'customer@example.com', // Replace with dynamic customer email
+          contact: '9999999999', // Replace with dynamic customer contact
         },
         theme: {
-          color: '#3399cc',
+          color: '#3399cc', // Customize payment theme color
         },
         modal: {
           ondismiss: () => {
@@ -88,10 +131,17 @@ export class CheckoutPage implements OnInit {
     }
   }
 
-  completeOrder() {
-    alert('Thank you for your payment! Your order has been placed successfully.');
+  /**
+   * Handle order completion after successful payment.
+   */
+  completeOrder(paymentResponse: any) {
+    console.log('Payment Response:', paymentResponse);
+
+    // Clear the cart
     this.cartItems = [];
-    localStorage.removeItem('cart'); // Clear the cart
-    console.log('Cart cleared and order completed');
+    localStorage.removeItem('cart');
+
+    alert('Thank you for your payment! Your order has been placed successfully.');
+    console.log('Cart cleared and order completed.');
   }
 }

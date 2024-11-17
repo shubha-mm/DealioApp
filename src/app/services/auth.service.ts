@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword,signInWithRedirect, GithubAuthProvider, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail, GoogleAuthProvider, GithubAuthProvider, signInWithPopup } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { authState } from 'rxfire/auth'; // Import authState to get real-time user state
 
 @Injectable({
@@ -11,7 +10,7 @@ export class AuthService {
   constructor(private auth: Auth, private router: Router) {}
 
   // Get current user as an observable
-  getCurrentUser(): Observable<any> {
+  getCurrentUser() {
     return authState(this.auth); // This returns the current user as an observable
   }
 
@@ -31,36 +30,8 @@ export class AuthService {
   // Logout and redirect to login page
   logout() {
     return signOut(this.auth).then(() => {
-      this.router.navigate(['/tabs/home']);
+      this.router.navigate(['/login']);
     });
-  }
-
-  // Google login method
-  async googleLogin(): Promise<any> {
-    try {
-      const provider = new GoogleAuthProvider();
-      const result = await signInWithPopup(this.auth, provider);
-      this.router.navigate(['/tabs/home']);
-      return result;
-    } catch (error) {
-      console.error('Error in Google login:', error);
-
-      // Log more details for debugging
-      if (error instanceof Error) {
-        console.error('Error message:', error.message);
-        console.error('Error stack:', error.stack);
-      }
-
-      if ((error as any).code) {
-        console.error('Error code:', (error as any).code);
-      }
-
-      if ((error as any).message) {
-        console.error('Error message:', (error as any).message);
-      }
-
-      throw error;
-    }
   }
 
   // Sign up with email and password
@@ -76,17 +47,32 @@ export class AuthService {
         throw error; // Propagate error if signup fails
       });
   }
-
-  async githubLogin(): Promise<any> {
-    try {
-      const provider = new GithubAuthProvider();
-      await signInWithRedirect(this.auth, provider); // Using redirect for GitHub login
-      // After redirection, the result will be available in the FirebaseAuth listener
-    } catch (error) {
-      console.error('Error in GitHub login:', error);
-      throw error;
-    }
+  googleLogin(): Promise<any> {
+    const provider = new GoogleAuthProvider();
+    return signInWithPopup(this.auth, provider)
+      .then((result) => {
+        console.log('Google login successful', result);
+        this.router.navigate(['/tabs/home']);
+      })
+      .catch((error: any) => {
+        console.error('Google login failed', error);
+        throw error;
+      });
   }
+
+  githubLogin(): Promise<any> {
+    const provider = new GithubAuthProvider();
+    return signInWithPopup(this.auth, provider)
+      .then((result) => {
+        console.log('GitHub login successful', result);
+        this.router.navigate(['/tabs/home']);
+      })
+      .catch((error: any) => {
+        console.error('GitHub login failed', error);
+        throw error;
+      });
+  }
+
 
   // Reset password
   async resetPassword(email: string): Promise<void> {
