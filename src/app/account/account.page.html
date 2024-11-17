@@ -1,119 +1,105 @@
 <ion-header>
   <ion-toolbar>
+    <!-- Back Button with (click) Event -->
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="goBack()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>Account</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <!-- User Details Section -->
-  <div class="user-details">
-    <h2>+918968618755</h2>
-    <p>Explore <ion-icon name="diamond-outline"></ion-icon> Plus</p>
+  <div *ngIf="userDetails; else noData">
+    <!-- User Details Section -->
+    <div class="user-details">
+      <h2>{{ userDetails.name || 'User Name' }}</h2>
+      <p>Email: {{ userDetails.email || 'user@example.com' }}</p>
+      <p>Phone: {{ userDetails.phone || '+91 XXXXX XXXXX' }}</p>
+    </div>
+
+    <!-- Quick Links Section -->
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-card button routerLink="/orders">
+            <ion-card-content>
+              <ion-icon name="cube-outline"></ion-icon>
+              <p>Orders</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="6">
+          <ion-card button routerLink="/wishlist">
+            <ion-card-content>
+              <ion-icon name="heart-outline"></ion-icon>
+              <p>Wishlist</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="6">
+          <ion-card button routerLink="/coupons">
+            <ion-card-content>
+              <ion-icon name="pricetags-outline"></ion-icon>
+              <p>Coupons</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="6">
+          <ion-card button routerLink="/help-center">
+            <ion-card-content>
+              <ion-icon name="help-circle-outline"></ion-icon>
+              <p>Help Center</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <!-- Credit Options Section -->
+    <ion-list>
+      <ion-item>
+        <ion-icon slot="start" name="cash-outline"></ion-icon>
+        <ion-label>
+          <h3>Personal Loan upto ₹10,00,000</h3>
+          <p>Instant cash for all your needs!</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="card-outline"></ion-icon>
+        <ion-label>
+          <h3>Flipkart Pay Later</h3>
+          <p>Instant credit of up to ₹1 Lakh. Apply Now</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <!-- Credit Score Section -->
+    <ion-list>
+      <ion-item>
+        <ion-icon slot="start" name="stats-chart-outline"></ion-icon>
+        <ion-label>
+          <h3>Free credit score check</h3>
+          <p>Get detailed credit report instantly.</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <!-- Notifications Section -->
+    <ion-list>
+      <ion-item>
+        <ion-icon slot="start" name="notifications-outline"></ion-icon>
+        <ion-label>
+          <h3>Tap for latest updates and offers</h3>
+        </ion-label>
+      </ion-item>
+    </ion-list>
   </div>
 
-  <!-- Quick Links Section -->
-  <ion-grid>
-    <ion-row>
-      <ion-col size="6">
-        <ion-card button routerLink="/orders">
-          <ion-card-content>
-            <ion-icon name="cube-outline"></ion-icon>
-            <p>Orders</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col size="6">
-        <ion-card button routerLink="/wishlist">
-          <ion-card-content>
-            <ion-icon name="heart-outline"></ion-icon>
-            <p>Wishlist</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col size="6">
-        <ion-card button routerLink="/coupons">
-          <ion-card-content>
-            <ion-icon name="pricetags-outline"></ion-icon>
-            <p>Coupons</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col size="6">
-        <ion-card button routerLink="/help-center">
-          <ion-card-content>
-            <ion-icon name="help-circle-outline"></ion-icon>
-            <p>Help Center</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-
-  <!-- Credit Options Section -->
-  <ion-list>
-    <ion-item>
-      <ion-icon slot="start" name="cash-outline"></ion-icon>
-      <ion-label>
-        <h3>Personal Loan upto ₹10,00,000</h3>
-        <p>Instant cash for all your needs!</p>
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-icon slot="start" name="card-outline"></ion-icon>
-      <ion-label>
-        <h3>Flipkart Pay Later</h3>
-        <p>Instant credit of up to ₹1 Lakh. Apply Now</p>
-      </ion-label>
-    </ion-item>
-  </ion-list>
-
-  <!-- Credit Score Section -->
-  <ion-list>
-    <ion-item>
-      <ion-icon slot="start" name="stats-chart-outline"></ion-icon>
-      <ion-label>
-        <h3>Free credit score check</h3>
-        <p>Get detailed credit report instantly.</p>
-      </ion-label>
-    </ion-item>
-  </ion-list>
-
-  <!-- Notifications Section -->
-  <ion-list>
-    <ion-item>
-      <ion-icon slot="start" name="notifications-outline"></ion-icon>
-      <ion-label>
-        <h3>Tap for latest updates and offers</h3>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <ng-template #noData>
+    <div class="no-data">
+      <p>No user data available. Please try again later.</p>
+    </div>
+  </ng-template>
 </ion-content>
-
-<ion-footer>
-  <!-- Bottom Navigation Tabs -->
-  <ion-tabs>
-    <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="home">
-        <ion-icon name="home-outline"></ion-icon>
-        <ion-label>Home</ion-label>
-      </ion-tab-button>
-      <ion-tab-button tab="explore">
-        <ion-icon name="search-outline"></ion-icon>
-        <ion-label>Explore</ion-label>
-      </ion-tab-button>
-      <ion-tab-button tab="categories">
-        <ion-icon name="grid-outline"></ion-icon>
-        <ion-label>Categories</ion-label>
-      </ion-tab-button>
-      <ion-tab-button tab="account" selected>
-        <ion-icon name="person-outline"></ion-icon>
-        <ion-label>Account</ion-label>
-      </ion-tab-button>
-      <ion-tab-button tab="cart">
-        <ion-icon name="cart-outline"></ion-icon>
-        <ion-label>Cart</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
-</ion-footer>

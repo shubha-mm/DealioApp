@@ -34,6 +34,8 @@ export class CheckoutPage implements OnInit {
 
   async makePayment() {
     try {
+      console.log('Initiating payment with total amount:', this.totalAmount);
+
       // Call the backend to create a Razorpay order
       const order = await this.http
         .post<RazorpayOrder>('http://localhost:3000/create-order', {
@@ -44,9 +46,12 @@ export class CheckoutPage implements OnInit {
 
       // Ensure order is valid
       if (!order || !order.id) {
-        throw new Error('Invalid Razorpay order');
+        throw new Error('Invalid Razorpay order response');
       }
 
+      console.log('Razorpay order created successfully:', order);
+
+      // Razorpay payment options
       const options = {
         key: 'YOUR_RAZORPAY_KEY_ID', // Replace with your Razorpay Key ID
         amount: order.amount, // Amount from backend
@@ -55,7 +60,7 @@ export class CheckoutPage implements OnInit {
         description: 'Order Payment',
         order_id: order.id, // Order ID from backend
         handler: (response: any) => {
-          console.log('Payment Successful:', response);
+          console.log('Payment successful with response:', response);
           this.completeOrder();
         },
         prefill: {
@@ -66,19 +71,27 @@ export class CheckoutPage implements OnInit {
         theme: {
           color: '#3399cc',
         },
+        modal: {
+          ondismiss: () => {
+            console.warn('Payment popup closed by user');
+            alert('Payment was not completed. Please try again.');
+          },
+        },
       };
 
+      // Open Razorpay payment popup
       const rzp = new Razorpay(options);
       rzp.open();
     } catch (error) {
-      console.error('Error during payment:', error);
-      alert('Payment failed. Please try again.');
+      console.error('Error during payment process:', error);
+      alert('Payment failed. Please check your internet connection or contact support.');
     }
   }
 
   completeOrder() {
-    alert('Thank you for your payment! Your order has been placed.');
+    alert('Thank you for your payment! Your order has been placed successfully.');
     this.cartItems = [];
     localStorage.removeItem('cart'); // Clear the cart
+    console.log('Cart cleared and order completed');
   }
 }

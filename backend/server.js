@@ -1,86 +1,59 @@
 const express = require('express');
 const Razorpay = require('razorpay');
+const bodyParser = require('body-parser');
 const cors = require('cors');
-const crypto = require('crypto');
-require('dotenv').config(); // Load environment variables
-
-// Validate environment variables
-if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
-  console.error('Missing Razorpay credentials in .env file');
-  process.exit(1); // Exit the server if credentials are missing
-}
-
+require('dotenv').config();
 const app = express();
+app.use(cors());
+app.use(bodyParser.json());
 
-// Middleware
-app.use(cors({ origin: true })); // Customize CORS as needed
-app.use(express.json());
-
-// Initialize Razorpay instance
+// Replace with your Razorpay Key ID and Key Secret
 const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID,
-  key_secret: process.env.RAZORPAY_KEY_SECRET,
+  key_id: 'rzp_live_NnJbR7ipdHTQ7N', // Replace with actual Key ID
+  key_secret: 'HkxljT05kbTqxzCD6xmTwRK1', // Replace with actual Key Secret
 });
 
-// Endpoint to create an order
+// Route to create a Razorpay order
 app.post('/create-order', async (req, res) => {
   try {
-    const { amount, currency = 'INR' } = req.body;
+    // Log incoming request payload
+    console.log('Incoming request to /create-order:', req.body);
 
-    if (!amount || amount <= 0) {
-      return res.status(400).json({ error: 'Invalid amount specified' });
-    }
+    const { amount, currency } = req.body;
 
+    // Log the options being sent to Razorpay
     const options = {
-      amount: amount * 100, // Convert to paise
-      currency,
-      receipt: `receipt_order_${Date.now()}`,
+      amount: amount, // Amount in paise
+      currency: currency, // Currency
+      receipt: `receipt_order_${Date.now()}`, // Unique receipt ID
     };
-
     console.log('Creating Razorpay order with options:', options);
 
+    // Create order with Razorpay
     const order = await razorpay.orders.create(options);
-    res.status(200).json({ success: true, order });
+
+    // Log the response from Razorpay
+    console.log('Razorpay order created successfully:', order);
+
+    res.status(200).json(order); // Send order details back to the frontend
   } catch (error) {
-    console.error('Error creating Razorpay order:', error.message);
-    res.status(500).json({ error: 'Internal Server Error' });
+    // Log error details for debugging
+    console.error('Error creating Razorpay order:', {
+      message: error.message,
+      stack: error.stack,
+      data: error,
+    });
+
+    // Send error response to the client
+    res.status(500).json({
+      message: 'Error creating Razorpay order',
+      error: error.message,
+    });
   }
-});
-
-// Endpoint to verify payment (optional for client-side payments)
-app.post('/verify-payment', (req, res) => {
-  try {
-    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
-
-    if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature) {
-      return res.status(400).json({ error: 'Missing payment details for verification' });
-    }
-
-    const hash = crypto
-      .createHmac('sha256', process.env.RAZORPAY_KEY_SECRET)
-      .update(`${razorpay_order_id}|${razorpay_payment_id}`)
-      .digest('hex');
-
-    if (hash === razorpay_signature) {
-      console.log('Payment verified successfully:', razorpay_payment_id);
-      res.status(200).json({ success: true, message: 'Payment Verified' });
-    } else {
-      console.warn('Payment verification failed:', razorpay_payment_id);
-      res.status(400).json({ success: false, error: 'Payment Verification Failed' });
-    }
-  } catch (error) {
-    console.error('Error verifying payment:', error.message);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
-
-// Health check endpoint
-app.get('/', (req, res) => {
-  res.status(200).json({ message: 'Razorpay Payment API is running' });
 });
 
 // Start server
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });

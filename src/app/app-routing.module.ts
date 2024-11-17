@@ -107,11 +107,18 @@ const routes: Routes = [
     loadChildren: () =>
       import('./razorpay-payment/razorpay-payment.module').then((m) => m.RazorpayPaymentPageModule),
   },
+  {
+    path: 'checkout',
+    loadChildren: () =>
+      import('./checkout/checkout.module').then((m) => m.CheckoutPageModule),
+  },
+
 
   // Wildcard route for undefined paths
-  {
-    path: '**', // Catch-all route
-    redirectTo: 'login', // Redirect undefined routes to login page
+  {// Redirect undefined routes to login page
+    path: '**', // Wildcard for undefined routes
+    redirectTo: 'tabs/categories',
+    pathMatch: 'full', // Ensure 'pathMatch' is set to 'full'
   },
 ];
 
