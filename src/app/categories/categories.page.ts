@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-categories',
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./categories.page.scss'],
 })
 export class CategoriesPage {
-  searchTerm: string = '';
+  searchTerm: string = ''; // Search term for filtering categories
 
   // Categories with Ionicons
   categories = [
@@ -20,10 +21,18 @@ export class CategoriesPage {
 
   filteredCategories = [...this.categories];
 
+  constructor(private navCtrl: NavController) {}
+
+  // Filter categories based on the search term
   filterCategories() {
     const search = this.searchTerm.toLowerCase();
     this.filteredCategories = this.categories.filter((category) =>
       category.name.toLowerCase().includes(search)
     );
+  }
+
+  // Navigate back to the categories page
+  goBack() {
+    this.navCtrl.navigateBack('/categories'); // Navigate back to the categories page
   }
 }

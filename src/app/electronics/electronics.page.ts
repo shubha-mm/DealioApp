@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-electronics',
@@ -6,70 +7,77 @@ import { Component } from '@angular/core';
   styleUrls: ['./electronics.page.scss'],
 })
 export class ElectronicsPage {
-  searchTerm: string = '';
+  searchTerm: string = ''; // Search term from the search bar
 
-  // Sample Product List with 10 items
+  // Sample Product List
   products = [
     {
-      name: 'Smartphone',
+      name: 'iPhone',
       price: 14999,
-      image: 'assets/images/smartphone.jpg',
+      image: 'https://tse4.mm.bing.net/th?id=OIP.DX7F6weLV7TgywURRb7VeAHaHa&pid=Api&P=0&h=180',
     },
     {
-      name: 'Laptop',
+      name: 'Macbook Pro',
       price: 54999,
-      image: 'assets/images/laptop.jpg',
+      image: 'https://bgr.com/wp-content/uploads/2021/12/16-macbook-pro-8.jpg?quality=82&strip=all',
     },
     {
-      name: 'Smartwatch',
+      name: 'Apple Watch Series 9',
       price: 9999,
-      image: 'assets/images/smartwatch.jpg',
+      image: 'https://www.techspot.com/images/products/2023/wearables/org/2023-09-20-product.jpg',
     },
     {
-      name: 'Bluetooth Speaker',
+      name: 'Middleton Portable Bluetooth Speaker',
       price: 2999,
-      image: 'assets/images/speaker.jpg',
+      image: 'https://tse4.mm.bing.net/th?id=OIP.A88bacuJT8WrYC7MuyRE2gHaHa&pid=Api&P=0&h=180',
     },
     {
       name: 'Camera',
       price: 19999,
-      image: 'assets/images/camera.jpg',
+      image: 'https://tse3.mm.bing.net/th?id=OIP.CaG3r6nOQG-DSdVKXN2z-wHaHa&pid=Api&P=0&h=180',
     },
     {
       name: 'Headphones',
       price: 2999,
-      image: 'assets/images/headphones.jpg',
+      image: 'https://tse1.mm.bing.net/th?id=OIP.rAvct3LQHEOmeELG99irtwHaHa&pid=Api&P=0&h=180',
     },
     {
-      name: 'Tablet',
+      name: 'iPad Pro',
       price: 24999,
-      image: 'assets/images/tablet.jpg',
+      image: 'https://cdn.macstories.net/img_2287-1621270775533.jpeg',
     },
     {
-      name: 'Gaming Console',
+      name: 'Sony PlayStation 5 (Slim Edition)',
       price: 39999,
-      image: 'assets/images/console.jpg',
+      image: 'https://s.yimg.com/os/creatr-uploaded-images/2020-11/7c9dc7a0-24f3-11eb-aed4-9f1ba3e2dec3',
     },
     {
       name: 'Power Bank',
       price: 1999,
-      image: 'assets/images/powerbank.jpg',
+      image: 'https://tse3.mm.bing.net/th?id=OIP.mxImNY4k2zlRWhUpiGCyyQHaG9&pid=Api&P=0&h=180',
     },
     {
       name: 'External Hard Drive',
       price: 5999,
-      image: 'assets/images/harddrive.jpg',
+      image: 'https://tse2.mm.bing.net/th?id=OIP.0bSrvjv9egaSycrGBfuxPQHaHa&pid=Api&P=0&h=180',
     },
   ];
 
   // Filtered Products Array
   filteredProducts = [...this.products];
 
-  // Filter Logic
+  constructor(private navCtrl: NavController) {}
+
+  // Filters products based on the search term
   filterProducts() {
-    const search = this.searchTerm.toLowerCase();
+    const search = this.searchTerm.toLowerCase().trim();
     this.filteredProducts = this.products.filter((product) =>
       product.name.toLowerCase().includes(search)
     );
+  }
+
+  // Method to navigate back to the previous page or a specific page
+  goBack() {
+    this.navCtrl.navigateBack('/categories'); // Navigates back to the home page
   }
 }
