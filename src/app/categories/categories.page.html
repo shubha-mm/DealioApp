@@ -16,7 +16,7 @@
     <ion-row>
     
       <ion-col size="6" *ngFor="let category of filteredCategories">
-        <!-- Use routerLink for navigation -->
+     
         <div class="category-card" [routerLink]="category.route">
           <ion-icon [name]="category.icon" size="large"></ion-icon>
           <p>{{ category.name }}</p>

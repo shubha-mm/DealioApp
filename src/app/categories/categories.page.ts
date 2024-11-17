@@ -9,7 +9,7 @@ import { NavController } from '@ionic/angular';
 export class CategoriesPage {
   searchTerm: string = '';
 
-  // Categories with Ionicons
+
   categories = [
     { name: 'Electronics', icon: 'desktop-outline', route: '/electronics' },
     { name: 'Clothing', icon: 'shirt-outline', route: '/clothing' },
@@ -23,7 +23,7 @@ export class CategoriesPage {
 
   constructor(private navCtrl: NavController) {}
 
-  // Filter categories based on the search term
+
   filterCategories() {
     const search = this.searchTerm.toLowerCase();
     this.filteredCategories = this.categories.filter((category) =>
