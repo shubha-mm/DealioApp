@@ -8,7 +8,7 @@ const routes: Routes = [
   // Redirect root path to Categories
   {
     path: '',
-    redirectTo: 'tabs/categories', // Redirect to Categories Page
+    redirectTo: 'login', // Redirect to Categories Page
     pathMatch: 'full',
   },
 
