@@ -1,100 +1,144 @@
+/***********************
+ * Enhanced Card Styles *
+ ***********************/
+
 /* Card styles */
 ion-card {
-  width: 160px; /* Fixed width for consistent card size */
-  height: 230px; /* Fixed height for consistent card size */
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-  background-color: #ffffff; /* Default card background color */
+  width: 160px; /* Consistent card size */
+  height: 250px; /* Adjusted height to fit content properly */
+  border-radius: 10px; /* Smooth rounded corners */
+  overflow: hidden; /* Ensure content stays inside */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  background-color: #ffffff; /* White background for the card */
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Ensure proper spacing between content */
+  justify-content: space-between; /* Space out card content */
+  align-items: center; /* Center content horizontally */
 }
 
 ion-card:hover {
-  transform: translateY(-5px); /* Slight lift effect on hover */
-  background-color: #ff9900; /* Background color on hover */
-  color: #ffffff; /* Change text color on hover */
+  transform: translateY(-5px); /* Slight hover lift */
+  background-color: #f9f9f9; /* Light gray background on hover */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
 }
 
 /* Card image styles */
 ion-card img {
-  width: 100%; /* Ensure the image fits the card width */
-  height: 120px; /* Fixed height for images */
-  object-fit: contain; /* Prevent distortion while maintaining aspect ratio */
-  background-color: #f9f9f9; /* Neutral background for images */
+  width: 80%; /* Slight padding for the image */
+  height: 100px; /* Consistent image height */
+  object-fit: contain; /* Maintain aspect ratio */
+  margin-top: 10px; /* Add space above the image */
+  background-color: #f2f2f2; /* Neutral background */
+  border-radius: 5px; /* Slightly rounded edges for the image */
+}
+
+/* Card styles */
+ion-card {
+  width: 180px; /* Fixed width for uniform size */
+  height: 300px; /* Adjusted height to fit content properly */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.3s ease-in-out;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+ion-card:hover {
+  transform: translateY(-5px); /* Move card slightly upward */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  background-color: #ff9900; /* Change background color to orange */
+  color: #ffffff; /* Change text color to white */
+}
+
+/* Card image styles */
+ion-card img {
+  width: 100%;
+  height: 140px; /* Consistent image height */
+  object-fit: contain; /* Prevent image distortion */
+  padding: 8px;
+  background-color: #f9f9f9;
   transition: opacity 0.3s ease-in-out;
 }
 
 ion-card:hover img {
-  opacity: 0.8; /* Slightly dim the image on hover */
+  opacity: 0.9; /* Slight fade effect on hover */
 }
 
-/* Card title */
-ion-card-header {
-  text-align: center;
-  padding: 8px;
-}
-
+/* Card title styles */
 ion-card-title {
-  font-size: 14px; /* Adjusted font size for consistent spacing */
+  font-size: 1rem;
   font-weight: bold;
-  color: #333; /* Default title color */
+  margin-top: 8px;
+  color: #333;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   transition: color 0.3s ease-in-out;
 }
 
 ion-card:hover ion-card-title {
-  color: #ffffff; /* Title color changes to white on hover */
+  color: #ffffff; /* Change title color on hover */
 }
 
 /* Card content */
 ion-card-content {
+  padding: 10px;
+  font-size: 0.85rem;
+  color: #28a745; /* Green text for price or availability */
+  font-weight: bold;
   text-align: center;
-  font-size: 13px; /* Adjusted font size for uniformity */
-  color: #666; /* Default content text color */
-  padding: 8px;
+  margin-bottom: 8px;
   transition: color 0.3s ease-in-out;
 }
 
 ion-card:hover ion-card-content {
-  color: #ffffff; /* Content text color changes to white on hover */
-}
-
-ion-card-content p {
-  margin: 5px 0;
-  transition: color 0.3s ease-in-out;
-}
-
-ion-card:hover ion-card-content p {
-  color: #ffffff; /* Paragraph text color changes to white on hover */
+  color: #ffffff; /* Change content color on hover */
 }
 
 /* Add-to-Cart Button Styles */
 ion-button {
-  --background: #ff9900; /* Vibrant orange background */
-  --background-hover: #e68a00; /* Darker orange on hover */
-  --background-activated: #cc7a00; /* Even darker orange when pressed */
-  --color: white; /* White text color */
-  font-size: 14px; /* Readable font size */
-  font-weight: bold; /* Bold text for emphasis */
-  border-radius: 6px; /* Rounded corners */
-  padding: 8px 12px; /* Balanced padding */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-  transition: background-color 0.3s ease, transform 0.2s ease-in-out; /* Smooth transitions */
-  border: none; /* Removed border */
+  --padding:10px;
+  
+  --background: #fff;
+  --color: black;
+  --border-radius: 8px;
+  --box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 ion-button:hover {
-  transform: translateY(-2px); /* Slight lift effect on hover */
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3); /* More prominent shadow */
+  --background: #ffffff;
+  --color: #ff9900;
+  --box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Disabled State for Add-to-Cart Button */
-ion-button[disabled] {
-  --background: #cccccc; /* Gray background for disabled state */
-  --color: #666666; /* Dimmed text color */
-  cursor: not-allowed; /* Disable pointer events */
-  box-shadow: none; /* Remove shadow */
-  transform: none; /* Remove hover effect */
+/* Responsive styling for smaller devices */
+@media (max-width: 600px) {
+  ion-col {
+    flex: 0 0 48%;
+  }
 }
+
+@media (max-width: 400px) {
+  ion-col {
+    flex: 0 0 100%;
+  }
+
+  ion-card {
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  ion-button {
+    font-size: 10px; /* Slightly smaller text for mobile */
+    width: 100%; /* Full width for smaller screens */
+  }
+}
+
