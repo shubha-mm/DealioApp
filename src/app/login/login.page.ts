@@ -31,23 +31,25 @@ export class LoginPage implements OnInit {
       });
   }
 
-  async googleLogin() {
-    try {
-      await this.authService.googleLogin();
-      console.log('Google login successful');
-      this.router.navigate(['/tabs/home']);
-    } catch (error) {
-      console.error('Google login failed', error);
-    }
+  googleLogin() {
+    this.authService
+      .googleLogin()
+      .then(() => {
+        this.router.navigate(['/tabs/home']);
+      })
+      .catch((error: any) => {
+        console.error('Google login failed', error);
+      });
   }
 
   githubLogin() {
-    this.authService.githubLogin()
+    this.authService
+      .githubLogin()
       .then(() => {
-        console.log('GitHub login successful, redirecting to home.');
+        this.router.navigate(['/tabs/home']);
       })
-      .catch((error) => {
-        console.error('GitHub login error:', error);
+      .catch((error: any) => {
+        console.error('GitHub login failed', error);
       });
   }
 

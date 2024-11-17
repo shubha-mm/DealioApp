@@ -5,10 +5,10 @@ import { TabsComponent } from './tabs/tabs.component'; // Import TabsComponent
 import { AuthGuard } from './guards/auth.guard'; // Import AuthGuard
 
 const routes: Routes = [
-  // Redirect root path to Categories
+  // Redirect root path to login
   {
     path: '',
-    redirectTo: 'login', // Redirect to Categories Page
+    redirectTo: 'login', // Default redirect to login page
     pathMatch: 'full',
   },
 
@@ -21,7 +21,7 @@ const routes: Routes = [
         path: 'home',
         loadChildren: () =>
           import('./home/home.module').then((m) => m.HomePageModule),
-        canActivate: [AuthGuard], // Protect Home route
+        canActivate: [AuthGuard], // Protect Home route with AuthGuard
       },
       {
         path: 'explore',
@@ -51,7 +51,7 @@ const routes: Routes = [
     ],
   },
 
-  // Standalone routes
+  // Standalone routes (login, signup, etc.)
   {
     path: 'login',
     loadChildren: () =>
@@ -110,15 +110,15 @@ const routes: Routes = [
 
   // Wildcard route for undefined paths
   {
-    path: '',
-    redirectTo: 'tabs/categories', // Redirect undefined routes to Categories
+    path: '**', // Catch-all route
+    redirectTo: 'login', // Redirect undefined routes to login page
   },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }), // Use preload strategy for optimization
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {}
