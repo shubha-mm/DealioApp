@@ -4,11 +4,11 @@ import { HttpClient } from '@angular/common/http';
 declare var Razorpay: any; // Declare Razorpay to be used globally after script is loaded
 
 interface RazorpayOrder {
-  id: string; // Order ID
-  amount: number; // Amount in paise
-  currency: string; // Currency type, e.g., "INR"
-  receipt: string; // Receipt identifier
-  status: string; // Status of the order, e.g., "created"
+  id: string; 
+  amount: number;
+  currency: string;
+  receipt: string;
+  status: string;
 }
 
 @Component({

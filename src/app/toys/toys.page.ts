@@ -7,9 +7,7 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./toys.page.scss'],
 })
 export class ToysPage {
-  searchTerm: string = ''; // Search term from the search bar
-
-  // Sample product list for toys with 10 items
+  searchTerm: string = ''; 
   products = [
     {
       name: 'Action Figure',

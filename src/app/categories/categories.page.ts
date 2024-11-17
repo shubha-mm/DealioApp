@@ -7,7 +7,7 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./categories.page.scss'],
 })
 export class CategoriesPage {
-  searchTerm: string = ''; // Search term for filtering categories
+  searchTerm: string = '';
 
   // Categories with Ionicons
   categories = [
@@ -31,8 +31,8 @@ export class CategoriesPage {
     );
   }
 
-  // Navigate back to the categories page
+
   goBack() {
-    this.navCtrl.navigateBack('/categories'); // Navigate back to the categories page
+    this.navCtrl.navigateBack('/categories'); 
   }
 }
