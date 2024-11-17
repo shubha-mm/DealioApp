@@ -11,7 +11,6 @@ import { CartService } from '../cart.service';
 export class HomePage {
   isDarkMode: boolean = false;
 
-  // Define the products array for both sections
   products = [
     { name: 'Smart Watch', price: 45, image: 'https://m.media-amazon.com/images/I/712wglSBTaL._AC_SX679_.jpg' },
     { name: 'Headphones', price: 30, image: 'https://m.media-amazon.com/images/I/7185qYEwIEL._AC_SX466_.jpg' },
@@ -37,7 +36,6 @@ export class HomePage {
     private cartService: CartService
   ) {
     this.platform.ready().then(() => {
-      // Check for previously saved theme
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme === 'dark') {
         this.isDarkMode = true;
@@ -48,39 +46,23 @@ export class HomePage {
       }
     });
   }
-  // Add the product to the cart
+  
   addToCart(product: any) {
     if (product) {
-      this.cartService.addToCart(product);  // Make sure the product is passed correctly
+      this.cartService.addToCart(product);  
     } else {
       console.error('Product is not defined or invalid');
     }
   }
-
-  // Toggle Dark and Light mode
-  toggleTheme() {
-    this.isDarkMode = !this.isDarkMode;
-    if (this.isDarkMode) {
-      document.body.classList.remove('light-mode');
-      document.body.classList.add('dark-mode');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.body.classList.remove('dark-mode');
-      document.body.classList.add('light-mode');
-      localStorage.setItem('theme', 'light');
-    }
-  }
-
-  // Function to close the menu
   closeMenu() {
     this.menu.close();
   }
 
-  // Function to handle the logout action
+ 
   logout() {
-    // Implement logout logic here, e.g., clear user session
+  
     console.log('User logged out');
-    // Navigate to the login page after logging out
+   
     this.navCtrl.navigateRoot('/login');
   }
 }

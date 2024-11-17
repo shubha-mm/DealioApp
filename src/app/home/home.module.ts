@@ -1,4 +1,4 @@
-// src/app/home/home.module.ts
+
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
@@ -11,11 +11,11 @@ import { SharedModule } from '../shared/shared/shared.module';
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule, // Import IonicModule to use Ionic components
+    IonicModule,
     HomePageRoutingModule,
-    SharedModule // Import SharedModule for FooterComponent
+    SharedModule 
   ],
   declarations: [HomePage],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA] // Add this schema to support custom elements
+  schemas: [CUSTOM_ELEMENTS_SCHEMA] 
 })
 export class HomePageModule {}

@@ -1,27 +1,27 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
-import { TabsComponent } from './tabs/tabs.component'; // Import TabsComponent
-import { AuthGuard } from './guards/auth.guard'; // Import AuthGuard
+import { TabsComponent } from './tabs/tabs.component';
+import { AuthGuard } from './guards/auth.guard'; 
 
 const routes: Routes = [
-  // Redirect root path to login
+
   {
     path: '',
     redirectTo: 'login',
-    pathMatch: 'full', // Ensure 'pathMatch' is set to 'full'
+    pathMatch: 'full',
   },
 
-  // Tabs and their child routes
+
   {
     path: 'tabs',
-    component: TabsComponent, // Parent TabsComponent
+    component: TabsComponent,
     children: [
       {
         path: 'home',
         loadChildren: () =>
           import('./home/home.module').then((m) => m.HomePageModule),
-        canActivate: [AuthGuard], // Protect Home route
+        canActivate: [AuthGuard], 
       },
       {
         path: 'explore',
@@ -45,13 +45,13 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: 'home', // Default tab fallback
+        redirectTo: 'home', 
         pathMatch: 'full',
       },
     ],
   },
 
-  // Standalone routes
+
   {
     path: 'login',
     loadChildren: () =>
@@ -113,12 +113,10 @@ const routes: Routes = [
       import('./checkout/checkout.module').then((m) => m.CheckoutPageModule),
   },
   
-
-  // Wildcard route for undefined paths
   {
-    path: '**', // Wildcard for undefined routes
+    path: '**', 
     redirectTo: 'tabs/categories',
-    pathMatch: 'full', // Ensure 'pathMatch' is set to 'full'
+    pathMatch: 'full', 
   },
 ];
 

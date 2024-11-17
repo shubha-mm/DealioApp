@@ -1,5 +1,5 @@
 ion-toolbar {
-    --background: #ff9900; /* Toys theme color */
+    --background: #ff9900;
     --color: #ffffff;
   }
   
@@ -16,34 +16,34 @@ ion-toolbar {
   }
   
   ion-card {
-    width: 160px; /* Fixed width for consistency */
-    height: 220px; /* Fixed height for consistency */
+    width: 160px; 
+    height: 220px;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease-in-out, background-color 0.3s ease-in-out;
-    background-color: #ffffff; /* Default card background */
+    background-color: #ffffff;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Space content evenly */
+    justify-content: space-between; 
   }
   
   ion-card:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
-    background-color: #ff9900; /* Hover background color */
-    color: #ffffff; /* Change text color */
+    transform: translateY(-5px); 
+    background-color: #ff9900;
+    color: #ffffff;
   }
   
   ion-card img {
     width: 100%;
-    height: 120px; /* Fixed height for images */
-    object-fit: contain; /* Ensure images fit properly without distortion */
-    background-color: #f9f9f9; /* Neutral background for images */
+    height: 120px;
+    object-fit: contain; 
+    background-color: #f9f9f9; 
     transition: opacity 0.3s ease-in-out;
   }
   
   ion-card:hover img {
-    opacity: 0.9; /* Slight dimming of image on hover */
+    opacity: 0.9;
   }
   
   ion-card-header {
@@ -53,7 +53,7 @@ ion-toolbar {
   }
   
   ion-card-title {
-    font-size: 14px; /* Slightly smaller text for uniformity */
+    font-size: 14px;
     font-weight: bold;
     color: #333;
     margin: 0;
@@ -61,12 +61,12 @@ ion-toolbar {
   }
   
   ion-card:hover ion-card-title {
-    color: #ffffff; /* Title color change on hover */
+    color: #ffffff; 
   }
   
   ion-card-content {
     text-align: center;
-    font-size: 13px; /* Adjusted font size for better fit */
+    font-size: 13px; 
     color: #666;
     padding: 8px;
     transition: color 0.3s ease-in-out;
@@ -77,30 +77,30 @@ ion-toolbar {
   }
   
   ion-card:hover ion-card-content {
-    color: #ffffff; /* Content text color change on hover */
+    color: #ffffff; 
   }
   
-  /* Grid Alignment */
+
   ion-grid {
-    justify-content: center; /* Center the grid content */
+    justify-content: center; 
   }
   
   ion-col {
-    display: flex; /* Ensure proper alignment */
+    display: flex;
     justify-content: center;
     margin-bottom: 10px;
   }
   
-  /* Responsive Design */
+  
   @media (max-width: 600px) {
     ion-col {
-      flex: 0 0 48%; /* 2 cards per row on small screens */
+      flex: 0 0 48%; 
     }
   }
   
   @media (max-width: 400px) {
     ion-col {
-      flex: 0 0 100%; /* 1 card per row on very small screens */
+      flex: 0 0 100%;
     }
   }
   

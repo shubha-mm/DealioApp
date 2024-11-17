@@ -10,7 +10,7 @@ export class AppComponent {
 
   constructor(private platform: Platform) {
     this.platform.ready().then(() => {
-      // Check for previously saved theme
+     
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme === 'dark') {
         this.isDarkMode = true;
@@ -22,17 +22,4 @@ export class AppComponent {
     });
   }
 
-  // Toggle Dark and Light mode
-  toggleTheme() {
-    this.isDarkMode = !this.isDarkMode;
-    if (this.isDarkMode) {
-      document.body.classList.remove('light-mode');
-      document.body.classList.add('dark-mode');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.body.classList.remove('dark-mode');
-      document.body.classList.add('light-mode');
-      localStorage.setItem('theme', 'light');
-    }
-  }
 }

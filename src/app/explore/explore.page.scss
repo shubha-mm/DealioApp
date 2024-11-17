@@ -63,16 +63,13 @@ ion-card {
   overflow: hidden;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
   display: flex;
   flex-direction: column; /* Ensure content is stacked vertically */
-  background-color: #ffffff; /* Default background color */
 }
 
 ion-card:hover {
   transform: translateY(-5px);
-  background-color: #ff9900; /* Hover color */
-  color: #ffffff; /* Change text color for better visibility */
 }
 
 ion-card img {

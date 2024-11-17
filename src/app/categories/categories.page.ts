@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-categories',
@@ -19,9 +18,9 @@ export class CategoriesPage {
     { name: 'Groceries', icon: 'cart-outline', route: '/groceries' },
   ];
 
-  filteredCategories = [...this.categories];
+  filteredCategories = [...this.categories]; // Initialize filtered categories
 
-  constructor(private navCtrl: NavController) {}
+  constructor() {}
 
   // Filter categories based on the search term
   filterCategories() {
@@ -29,10 +28,5 @@ export class CategoriesPage {
     this.filteredCategories = this.categories.filter((category) =>
       category.name.toLowerCase().includes(search)
     );
-  }
-
-  // Navigate back to the categories page
-  goBack() {
-    this.navCtrl.navigateBack('/categories'); // Navigate back to the categories page
   }
 }

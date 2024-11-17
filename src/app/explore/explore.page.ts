@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-explore',
@@ -36,18 +35,11 @@ export class ExplorePage {
   // Filtered products array
   filteredItems = [...this.products];
 
-  constructor(private router: Router) {}
-
   // Filters products based on the search term
   filterItems() {
     const searchText = this.searchTerm.toLowerCase();
     this.filteredItems = this.products.filter((product) =>
       product.name.toLowerCase().includes(searchText)
     );
-  }
-
-  // Navigate back to /tabs/home
-  goBack() {
-    this.router.navigate(['/tabs/home']);
   }
 }

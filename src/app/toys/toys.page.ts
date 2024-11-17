@@ -7,9 +7,9 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./toys.page.scss'],
 })
 export class ToysPage {
-  searchTerm: string = ''; // Search term from the search bar
+  searchTerm: string = '';
 
-  // Sample product list for toys with 10 items
+ 
   products = [
     {
       name: 'Action Figure',
@@ -63,12 +63,11 @@ export class ToysPage {
     },
   ];
 
-  // Filtered Products Array
+  
   filteredProducts = [...this.products];
 
   constructor(private navCtrl: NavController) {}
 
-  // Filter toy products based on the search term
   filterProducts() {
     const search = this.searchTerm.toLowerCase();
     this.filteredProducts = this.products.filter((product) =>
@@ -76,8 +75,8 @@ export class ToysPage {
     );
   }
 
-  // Navigate back to the categories page
+
   goBack() {
-    this.navCtrl.navigateBack('/categories'); // Replace with your fallback route
+    this.navCtrl.navigateBack('/categories'); 
   }
 }
