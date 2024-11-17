@@ -97,16 +97,16 @@ const routes: Routes = [
     loadChildren: () =>
       import('./contact/contact.module').then((m) => m.ContactPageModule),
   },
-  {
-    path: 'payment-method',
-    loadChildren: () =>
-      import('./payment-method/payment-method.module').then((m) => m.PaymentMethodPageModule),
-  },
-  {
-    path: 'razorpay-payment',
-    loadChildren: () =>
-      import('./razorpay-payment/razorpay-payment.module').then((m) => m.RazorpayPaymentPageModule),
-  },
+  // {
+  //   path: 'payment-method',
+  //   loadChildren: () =>
+  //     import('./payment-method/payment-method.module').then((m) => m.PaymentMethodPageModule),
+  // },
+  // {
+  //   path: 'razorpay-payment',
+  //   loadChildren: () =>
+  //     import('./razorpay-payment/razorpay-payment.module').then((m) => m.RazorpayPaymentPageModule),
+  // },
   {
     path: 'checkout',
     loadChildren: () =>
