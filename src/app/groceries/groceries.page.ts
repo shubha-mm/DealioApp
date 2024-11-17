@@ -78,6 +78,6 @@ export class GroceriesPage {
 
 
   goBack() {
-    this.navCtrl.navigateBack('/categories'); 
+    this.navCtrl.navigateBack('/tabs/categories');
   }
 }

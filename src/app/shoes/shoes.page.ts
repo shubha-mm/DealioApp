@@ -7,7 +7,7 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./shoes.page.scss'],
 })
 export class ShoesPage {
-  searchTerm: string = ''; 
+  searchTerm: string = '';
   products = [
     {
       name: 'Running Shoes',
@@ -76,6 +76,6 @@ export class ShoesPage {
 
   // Navigate back to the categories page
   goBack() {
-    this.navCtrl.navigateBack('/categories'); // Replace with your fallback route
+    this.navCtrl.navigateBack('/tabs/categories'); // Replace with your fallback route
   }
 }

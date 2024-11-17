@@ -68,7 +68,7 @@ export class ClothingPage {
 
   constructor(private navCtrl: NavController) {}
 
-  
+
   filterProducts() {
     const search = this.searchTerm.toLowerCase();
     this.filteredProducts = this.products.filter((product) =>
@@ -78,6 +78,6 @@ export class ClothingPage {
 
   // Navigate back to the categories page
   goBack() {
-    this.navCtrl.navigateBack('/categories'); // Replace with your fallback route
+    this.navCtrl.navigateBack('/tabs/categories'); // Replace with your fallback route
   }
 }
