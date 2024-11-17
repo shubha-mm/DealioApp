@@ -73,16 +73,20 @@
     <ion-title>
       <img src="https://www.pngmart.com/files/12/Shopee-Logo-Transparent-PNG.png" alt="Amazon Logo" class="logo" />
     </ion-title>
-    <span class="logo-text">SS Mart</span>
+    <span class="logo-text">Dealio</span>
     <ion-buttons slot="end">
-      <ion-button routerLink="/login">
-        <ion-icon name="person-outline"></ion-icon>
-      </ion-button>
+
+      <!-- Dark Mode / Light Mode Toggle -->
+      <ion-buttons slot="end">
+        <ion-button (click)="toggleTheme()">
+          <ion-icon [name]="isDarkMode ? 'sunny' : 'moon'"></ion-icon>
+        </ion-button>
+      </ion-buttons>
       <ion-button routerLink="/tabs/cart">
         <ion-icon name="cart-outline"></ion-icon>
         <ion-badge color="warning" slot="end" class="cart-badge">0</ion-badge>
       </ion-button>
-      
+
     </ion-buttons>
   </ion-toolbar>
 
@@ -190,5 +194,5 @@
       </ion-row>
     </ion-grid>
   </section>
-  
-</ion-content> 
+
+</ion-content>
