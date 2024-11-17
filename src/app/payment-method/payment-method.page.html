@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Payment Method</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2>Select a Payment Method</h2>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Credit/Debit Card</ion-label>
+      <ion-radio slot="start" value="card" [(ngModel)]="selectedPayment"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>PayPal</ion-label>
+      <ion-radio slot="start" value="paypal" [(ngModel)]="selectedPayment"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Razorpay</ion-label>
+      <ion-radio slot="start" value="razorpay" [(ngModel)]="selectedPayment"></ion-radio>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" routerLink="/razorpay-payment">Proceed</ion-button>
+</ion-content>

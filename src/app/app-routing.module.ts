@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+
 import { TabsComponent } from './tabs/tabs.component'; // Import TabsComponent
+import { AuthGuard } from './guards/auth.guard'; // Import AuthGuard
 
 const routes: Routes = [
   // Redirect root path to Categories
@@ -19,6 +21,7 @@ const routes: Routes = [
         path: 'home',
         loadChildren: () =>
           import('./home/home.module').then((m) => m.HomePageModule),
+        canActivate: [AuthGuard], // Protect Home route
       },
       {
         path: 'explore',
@@ -88,6 +91,21 @@ const routes: Routes = [
     path: 'beauty',
     loadChildren: () =>
       import('./beauty/beauty.module').then((m) => m.BeautyPageModule),
+  },
+  {
+    path: 'contact',
+    loadChildren: () =>
+      import('./contact/contact.module').then((m) => m.ContactPageModule),
+  },
+  {
+    path: 'payment-method',
+    loadChildren: () =>
+      import('./payment-method/payment-method.module').then((m) => m.PaymentMethodPageModule),
+  },
+  {
+    path: 'razorpay-payment',
+    loadChildren: () =>
+      import('./razorpay-payment/razorpay-payment.module').then((m) => m.RazorpayPaymentPageModule),
   },
 
   // Wildcard route for undefined paths
