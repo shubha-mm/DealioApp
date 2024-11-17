@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
-
+import { CartService } from '../cart.service';
 @Component({
   selector: 'app-groceries',
   templateUrl: './groceries.page.html',
@@ -66,7 +66,20 @@ export class GroceriesPage {
 
   filteredProducts = [...this.products];
 
-  constructor(private navCtrl: NavController) {}
+  constructor(private navCtrl: NavController,private cartService: CartService) {}
+
+  addToCart(product: any) {
+    if (product) {
+      product.isAdding = true; // Set the loading state for the specific product
+      setTimeout(() => {
+        this.cartService.addToCart(product);
+        product.isAdding = false; // Reset the loading state
+        console.log('Added to cart:', product);
+      }, 10); // Simulate a delay (e.g., for a backend request)
+    } else {
+      console.error('Product is not defined or invalid');
+    }
+  }
 
 
   filterProducts() {

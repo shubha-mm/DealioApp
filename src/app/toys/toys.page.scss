@@ -1,106 +1,100 @@
-ion-toolbar {
-    --background: #ff9900;
-    --color: #ffffff;
-  }
-  
-  ion-searchbar {
-    --background: #ffffff;
-    --placeholder-color: #aaa;
-    --color: #333;
-    margin: 10px auto;
-    width: 90%;
-    max-width: 400px;
-    height: 45px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  ion-card {
-    width: 160px; 
-    height: 220px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out, background-color 0.3s ease-in-out;
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; 
-  }
-  
-  ion-card:hover {
-    transform: translateY(-5px); 
-    background-color: #ff9900;
-    color: #ffffff;
-  }
-  
-  ion-card img {
-    width: 100%;
-    height: 120px;
-    object-fit: contain; 
-    background-color: #f9f9f9; 
-    transition: opacity 0.3s ease-in-out;
-  }
-  
-  ion-card:hover img {
-    opacity: 0.9;
-  }
-  
-  ion-card-header {
-    text-align: center;
-    padding: 8px;
-    transition: color 0.3s ease-in-out;
-  }
-  
-  ion-card-title {
-    font-size: 14px;
-    font-weight: bold;
-    color: #333;
-    margin: 0;
-    transition: color 0.3s ease-in-out;
-  }
-  
-  ion-card:hover ion-card-title {
-    color: #ffffff; 
-  }
-  
-  ion-card-content {
-    text-align: center;
-    font-size: 13px; 
-    color: #666;
-    padding: 8px;
-    transition: color 0.3s ease-in-out;
-  }
-  
-  ion-card-content p {
-    margin: 5px 0;
-  }
-  
-  ion-card:hover ion-card-content {
-    color: #ffffff; 
-  }
-  
+/*********************
+ * Toys Page Styles *
+ *********************/
 
-  ion-grid {
-    justify-content: center; 
-  }
-  
+/* Search Bar Styles */
+ion-searchbar {
+  --background: #f9f9f9;
+  --placeholder-color: #aaa;
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Grid Layout */
+ion-grid {
+  padding: 10px;
+}
+
+ion-row {
+  justify-content: center;
+}
+
+/* Card Styles */
+ion-card {
+  width: 100%;
+  max-width: 180px; /* Uniform card size */
+  margin: 10px auto; /* Center alignment */
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Ensure contents don’t overflow */
+  text-align: center;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Add a hover effect for cards */
+ion-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Image */
+ion-card img {
+  width: 100%;
+  height: 150px; /* Fixed height for images */
+  object-fit: cover; /* Ensure images are scaled properly */
+  border-bottom: 1px solid #f1f1f1;
+}
+
+/* Card Header */
+ion-card-header {
+  padding: 8px;
+  background-color: #ffffff;
+}
+
+ion-card-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+/* Card Content */
+ion-card-content {
+  padding: 10px;
+  background-color: #fafafa;
+}
+
+ion-card-content p {
+  font-size: 14px;
+  color: #555;
+  margin: 5px 0;
+}
+
+/* Add-to-Cart Button */
+ion-button {
+  --background: #ff9900;
+  --background-activated: #e68a00;
+  --background-hover: #e68a00;
+  --color: white;
+  font-size: 14px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
   ion-col {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
+    flex: 0 0 48%;
   }
-  
-  
-  @media (max-width: 600px) {
-    ion-col {
-      flex: 0 0 48%; 
-    }
+}
+
+@media (max-width: 400px) {
+  ion-col {
+    flex: 0 0 100%;
   }
-  
-  @media (max-width: 400px) {
-    ion-col {
-      flex: 0 0 100%;
-    }
+
+  ion-card {
+    max-width: 100%;
   }
-  
+}

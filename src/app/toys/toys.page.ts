@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-toys',
@@ -42,7 +43,7 @@ export class ToysPage {
       image: 'https://sp.yimg.com/ib/th?id=OPAC.38dJnNYjEy3Z4A474C474&o=5&pid=21.1&w=160&h=105',
     },
     {
-      name: 'Stuffed Toy',
+      name: 'Stuffed Toy Teddy Bear',
       price: 899,
       image: 'https://i5.walmartimages.com/asr/683488a1-eff8-4a0e-b076-9bb782a16c14.60bbfc5d285269f3a12eeb9c85dae585.jpeg',
     },
@@ -66,13 +67,25 @@ export class ToysPage {
   
   filteredProducts = [...this.products];
 
-  constructor(private navCtrl: NavController) {}
+  constructor(private navCtrl: NavController,private cartService: CartService) {}
 
   filterProducts() {
     const search = this.searchTerm.toLowerCase();
     this.filteredProducts = this.products.filter((product) =>
       product.name.toLowerCase().includes(search)
     );
+  }
+  addToCart(product: any) {
+    if (product) {
+      product.isAdding = true; // Set the loading state for the specific product
+      setTimeout(() => {
+        this.cartService.addToCart(product);
+        product.isAdding = false; // Reset the loading state
+        console.log('Added to cart:', product);
+      }, 10); // Simulate a delay (e.g., for a backend request)
+    } else {
+      console.error('Product is not defined or invalid');
+    }
   }
 
 

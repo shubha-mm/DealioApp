@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { CartService } from '../cart.service';
 @Component({
   selector: 'app-explore',
   templateUrl: './explore.page.html',
@@ -32,6 +32,7 @@ export class ExplorePage {
     { name: 'Men’s Watch', price: 6999, discountedPrice: 3999, discount: 43, image: 'https://tse4.mm.bing.net/th?id=OIP.GRRyX_fcBIU_3zUZvlRf_gHaHa&pid=Api&P=0&h=180' },
   ];
 
+  constructor(private cartService: CartService) {}
   // Filtered products array
   filteredItems = [...this.products];
 
@@ -41,5 +42,17 @@ export class ExplorePage {
     this.filteredItems = this.products.filter((product) =>
       product.name.toLowerCase().includes(searchText)
     );
+  }
+  addToCart(product: any) {
+    if (product) {
+      product.isAdding = true; // Set the loading state for the specific product
+      setTimeout(() => {
+        this.cartService.addToCart(product);
+        product.isAdding = false; // Reset the loading state
+        console.log('Added to cart:', product);
+      }, 10); // Simulate a delay (e.g., for a backend request)
+    } else {
+      console.error('Product is not defined or invalid');
+    }
   }
 }

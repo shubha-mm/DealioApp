@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
-
+import { CartService } from '../cart.service';
 @Component({
   selector: 'app-shoes',
   templateUrl: './shoes.page.html',
@@ -64,7 +64,7 @@ export class ShoesPage {
   // Filtered Products Array
   filteredProducts = [...this.products];
 
-  constructor(private navCtrl: NavController) {}
+  constructor(private navCtrl: NavController, private cartService: CartService) {}
 
   // Filter shoe products based on the search term
   filterProducts() {
@@ -72,6 +72,19 @@ export class ShoesPage {
     this.filteredProducts = this.products.filter((product) =>
       product.name.toLowerCase().includes(search)
     );
+  }
+
+  addToCart(product: any) {
+    if (product) {
+      product.isAdding = true; // Set the loading state for the specific product
+      setTimeout(() => {
+        this.cartService.addToCart(product);
+        product.isAdding = false; // Reset the loading state
+        console.log('Added to cart:', product);
+      }, 10); // Simulate a delay (e.g., for a backend request)
+    } else {
+      console.error('Product is not defined or invalid');
+    }
   }
 
   // Navigate back to the categories page

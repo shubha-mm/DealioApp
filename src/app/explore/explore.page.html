@@ -28,6 +28,7 @@
               <span class="original-price">₹{{ item.price }}</span>
             </p>
             <p>{{ item.discount }}% off</p>
+            <ion-button expand="block" (click)="addToCart(item)">Add to Cart</ion-button>
           </ion-card-content>
         </ion-card>
       </ion-col>
