@@ -64,7 +64,7 @@ export class ToysPage {
     },
   ];
 
-  
+
   filteredProducts = [...this.products];
 
   constructor(private navCtrl: NavController,private cartService: CartService) {}
@@ -90,6 +90,6 @@ export class ToysPage {
 
 
   goBack() {
-    this.navCtrl.navigateBack('/categories'); 
+    this.navCtrl.navigateBack('/tabs/categories');
   }
 }

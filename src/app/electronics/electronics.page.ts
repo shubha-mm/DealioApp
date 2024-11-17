@@ -90,6 +90,6 @@ export class ElectronicsPage {
 
   // Method to navigate back to the previous page or a specific page
   goBack() {
-    this.navCtrl.navigateBack('/categories'); // Navigates back to the home page
+    this.navCtrl.navigateBack('/tabs/categories'); // Navigates back to the home page
   }
 }
