@@ -38,35 +38,58 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 /* Global styles for theming */
 :root {
-    --ion-color-primary: #ff8a65;  
-    --ion-color-primary-contrast: #ffffff; 
-    --ion-toolbar-background: linear-gradient(45deg, #ff8a65, #ffccd5); 
+    --ion-color-primary: #ff8a65;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-toolbar-background: linear-gradient(45deg, #ff8a65, #ffccd5);
   }
-  
-  
+
+
   ion-toolbar {
     --background: var(--ion-toolbar-background);
   }
   ::-webkit-scrollbar {
-    width: 12px; 
+    width: 12px;
   }
-  
+
   ::-webkit-scrollbar-track {
-    background: #35327b; 
+    background: #35327b;
   }
-  
+
   ::-webkit-scrollbar-thumb {
     background-color: #831e79;
-    border-radius: 10px; 
+    border-radius: 10px;
     border: 3px solid #5645ad;
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
-    background: #5645ad; 
+    background: #5645ad;
   }
-  
+
   * {
     scrollbar-width: thin;
     scrollbar-color: #fff #fff;
   }
-  
+
+  /* Light Mode */
+body.light-mode {
+  --ion-background-color: #ffffff;
+  --ion-text-color: #000000;
+  --ion-toolbar-background: #ffffff;
+  --ion-toolbar-color: #000000;
+  --ion-item-background: #f4f4f4;
+  --ion-item-color: #000000;
+  --ion-button-background: #ffffff;
+  --ion-button-color: #000000;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  --ion-background-color: #121212;
+  --ion-text-color: #ffffff;
+  --ion-toolbar-background: #1f1f1f;
+  --ion-toolbar-color: #ffffff;
+  --ion-item-background: #333333;
+  --ion-item-color: #ffffff;
+  --ion-button-background: #555555;
+  --ion-button-color: #ffffff;
+}
