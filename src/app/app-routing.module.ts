@@ -110,7 +110,7 @@ const routes: Routes = [
 
   // Wildcard route for undefined paths
   {
-    path: '**',
+    path: '',
     redirectTo: 'tabs/categories', // Redirect undefined routes to Categories
   },
 ];
@@ -121,4 +121,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {}
