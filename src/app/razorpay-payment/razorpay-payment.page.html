@@ -1,0 +1,11 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Razorpay Payment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2>Complete Your Payment</h2>
+  <p>Amount to Pay: <strong>{{ paymentAmount }} {{ currency }}</strong></p>
+  <ion-button expand="block" color="primary" (click)="payWithRazorpay()">Pay Now</ion-button>
+</ion-content>

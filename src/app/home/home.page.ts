@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MenuController, NavController } from '@ionic/angular';
 import { Platform } from '@ionic/angular';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-home',
@@ -32,7 +33,8 @@ export class HomePage {
   constructor(
     private menu: MenuController,
     private navCtrl: NavController,
-    private platform: Platform
+    private platform: Platform,
+    private cartService: CartService
   ) {
     this.platform.ready().then(() => {
       // Check for previously saved theme
@@ -45,6 +47,14 @@ export class HomePage {
         document.body.classList.add('light-mode');
       }
     });
+  }
+  // Add the product to the cart
+  addToCart(product: any) {
+    if (product) {
+      this.cartService.addToCart(product);  // Make sure the product is passed correctly
+    } else {
+      console.error('Product is not defined or invalid');
+    }
   }
 
   // Toggle Dark and Light mode

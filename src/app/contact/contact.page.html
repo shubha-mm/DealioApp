@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Contact Us</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="submitForm()" method="Post">
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input type="text" [(ngModel)]="contactForm.name" name="name" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" [(ngModel)]="contactForm.email" name="email" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Message</ion-label>
+      <ion-textarea [(ngModel)]="contactForm.message" name="message" required></ion-textarea>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" [disabled]="!isFormValid()">Send Message</ion-button>
+  </form>
+</ion-content>
