@@ -1,48 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 declare var Razorpay: any;
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-razorpay-payment',
   templateUrl: './razorpay-payment.page.html',
   styleUrls: ['./razorpay-payment.page.scss'],
 })
-export class RazorpayPaymentPage {
-  paymentAmount: number = 500; // Amount in INR
-  currency: string = 'INR';
-  description: string = 'Payment for Order #12345';
-  razorpayKey: string = 'rzp_live_NnJbR7ipdHTQ7N'; // Replace with your Razorpay Key
+export class RazorpayPaymentPage implements OnInit{
 
-  constructor() {}
+  paymentAmount: number = 1000; // Example amount in smallest currency unit (e.g., paise for INR)
+  currency: string = 'INR'; // Default currency
+
+  constructor(private router: Router) {}
+
+  ngOnInit() {}
 
   payWithRazorpay() {
     const options = {
-      key: this.razorpayKey,
-      amount: this.paymentAmount * 100, // Convert to paisa
-      currency: this.currency,
-      name: 'Your App Name',
-      description: this.description,
-      image: 'https://your-logo-url.com/logo.png', // Optional logo URL
+      key: 'rzp_live_NnJbR7ipdHTQ7N', // Replace with your Razorpay Key
+      amount: this.paymentAmount, // Amount in smallest currency unit (e.g., paise)
+      currency: this.currency, // Currency code
+      name: 'Your Store Name',
+      description: 'Test Payment',
       handler: (response: any) => {
-        alert('Payment Successful! Payment ID: ' + response.razorpay_payment_id);
-        // Save response to backend or handle payment confirmation here
+        alert('Payment Successful');
+        this.router.navigate(['/success']); // Redirect to success page
       },
       prefill: {
-        name: 'John Doe', // Prefilled user name
-        email: 'john.doe@example.com', // Prefilled email
-        contact: '9876543210', // Prefilled contact
+        name: 'John Doe',
+        email: 'john.doe@example.com',
+        contact: '9999999999',
       },
       theme: {
-        color: '#3399cc', // Custom theme color
+        color: '#3399cc',
       },
     };
 
-    // Use the globally available Razorpay object
-    const razorpayInstance = new Razorpay(options);
-    razorpayInstance.open();
-
-    razorpayInstance.on('payment.failed', (response: any) => {
-      alert('Payment Failed! Error: ' + response.error.description);
-      // Handle payment failure
-    });
+    const razorpay = new Razorpay(options);
+    razorpay.open();
   }
 }

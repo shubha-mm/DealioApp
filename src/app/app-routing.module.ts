@@ -92,7 +92,11 @@ const routes: Routes = [
   {
     path: 'razorpay-payment',
     loadChildren: () => import('./razorpay-payment/razorpay-payment.module').then( m => m.RazorpayPaymentPageModule)
+  },  {
+    path: 'checkout',
+    loadChildren: () => import('./checkout/checkout.module').then( m => m.CheckoutPageModule)
   },
+
 
 
 ];
