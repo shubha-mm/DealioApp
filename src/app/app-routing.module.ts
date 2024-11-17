@@ -1,23 +1,27 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { TabsComponent } from './tabs/tabs.component'; // Import the TabsComponent
-import { AuthGuard } from './guards/auth.guard';
+
+import { TabsComponent } from './tabs/tabs.component'; // Import TabsComponent
+import { AuthGuard } from './guards/auth.guard'; // Import AuthGuard
 
 const routes: Routes = [
+  // Redirect root path to Categories
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'login', // Redirect to Categories Page
     pathMatch: 'full',
   },
+
+  // Tabs and their child routes
   {
     path: 'tabs',
-    component: TabsComponent, // Use the TabsComponent
+    component: TabsComponent, // Parent TabsComponent
     children: [
       {
         path: 'home',
         loadChildren: () =>
           import('./home/home.module').then((m) => m.HomePageModule),
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard], // Protect Home route
       },
       {
         path: 'explore',
@@ -41,11 +45,13 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: 'home',
+        redirectTo: 'home', // Default tab fallback
         pathMatch: 'full',
       },
     ],
   },
+
+  // Standalone routes
   {
     path: 'login',
     loadChildren: () =>
@@ -58,51 +64,61 @@ const routes: Routes = [
   },
   {
     path: 'clothing',
-    loadChildren: () => import('./clothing/clothing.module').then( m => m.ClothingPageModule)
+    loadChildren: () =>
+      import('./clothing/clothing.module').then((m) => m.ClothingPageModule),
   },
   {
     path: 'toys',
-    loadChildren: () => import('./toys/toys.module').then( m => m.ToysPageModule)
+    loadChildren: () =>
+      import('./toys/toys.module').then((m) => m.ToysPageModule),
   },
   {
     path: 'shoes',
-    loadChildren: () => import('./shoes/shoes.module').then( m => m.ShoesPageModule)
+    loadChildren: () =>
+      import('./shoes/shoes.module').then((m) => m.ShoesPageModule),
   },
   {
     path: 'groceries',
-    loadChildren: () => import('./groceries/groceries.module').then( m => m.GroceriesPageModule)
+    loadChildren: () =>
+      import('./groceries/groceries.module').then((m) => m.GroceriesPageModule),
   },
   {
     path: 'electronics',
-    loadChildren: () => import('./electronics/electronics.module').then( m => m.ElectronicsPageModule)
+    loadChildren: () =>
+      import('./electronics/electronics.module').then((m) => m.ElectronicsPageModule),
   },
   {
     path: 'beauty',
-    loadChildren: () => import('./beauty/beauty.module').then( m => m.BeautyPageModule)
+    loadChildren: () =>
+      import('./beauty/beauty.module').then((m) => m.BeautyPageModule),
   },
-
   {
     path: 'contact',
-    loadChildren: () => import('./contact/contact.module').then( m => m.ContactPageModule)
+    loadChildren: () =>
+      import('./contact/contact.module').then((m) => m.ContactPageModule),
   },
   {
     path: 'payment-method',
-    loadChildren: () => import('./payment-method/payment-method.module').then( m => m.PaymentMethodPageModule)
+    loadChildren: () =>
+      import('./payment-method/payment-method.module').then((m) => m.PaymentMethodPageModule),
   },
   {
     path: 'razorpay-payment',
-    loadChildren: () => import('./razorpay-payment/razorpay-payment.module').then( m => m.RazorpayPaymentPageModule)
-  },  {
-    path: 'checkout',
-    loadChildren: () => import('./checkout/checkout.module').then( m => m.CheckoutPageModule)
+    loadChildren: () =>
+      import('./razorpay-payment/razorpay-payment.module').then((m) => m.RazorpayPaymentPageModule),
   },
 
-
-
+  // Wildcard route for undefined paths
+  {
+    path: '',
+    redirectTo: 'tabs/categories', // Redirect undefined routes to Categories
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+  ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {}

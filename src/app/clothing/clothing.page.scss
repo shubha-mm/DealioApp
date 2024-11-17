@@ -1,0 +1,111 @@
+ion-toolbar {
+    --background: #ff9900; /* Clothing theme color */
+    --color: #ffffff;
+  }
+  
+  ion-searchbar {
+    --background: #ffffff;
+    --placeholder-color: #aaa;
+    --color: #333;
+    margin: 10px auto;
+    width: 90%;
+    max-width: 400px;
+    height: 45px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  ion-card {
+    width: 180px; /* Fixed width for consistent card size */
+    height: 260px; /* Fixed height for consistent card size */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space content evenly */
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    background-color: #ffffff; /* Default card background color */
+  }
+  
+  ion-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    background-color: #ff9900; /* Change background to #ff9900 */
+    color: #ffffff; /* Change text color to white */
+  }
+  
+  ion-card img {
+    width: 100%;
+    height: 120px; /* Fixed height for images */
+    object-fit: contain; /* Ensure images maintain aspect ratio */
+    background-color: #f9f9f9; /* Neutral background for images */
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  ion-card:hover img {
+    opacity: 0.8; /* Dim the image slightly on hover */
+  }
+  
+  ion-card-header {
+    text-align: center;
+    padding: 8px;
+    margin: 0 auto; /* Center the header content */
+  }
+  
+  ion-card-title {
+    font-size: 14px; /* Adjusted font size for consistent spacing */
+    font-weight: bold;
+    color: #333; /* Default text color */
+    margin: 0;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  ion-card:hover ion-card-title {
+    color: #ffffff; /* Change title text to white on hover */
+  }
+  
+  ion-card-content {
+    text-align: center;
+    font-size: 13px; /* Adjusted font size for consistent spacing */
+    color: #666; /* Default content text color */
+    padding: 8px;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  ion-card:hover ion-card-content {
+    color: #ffffff; /* Change content text to white on hover */
+  }
+  
+  ion-card-content p {
+    margin: 5px 0;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  ion-card:hover ion-card-content p {
+    color: #ffffff; /* Change paragraph text to white on hover */
+  }
+  
+  /* Grid Layout */
+  ion-grid {
+    justify-content: center; /* Center the grid content */
+  }
+  
+  ion-col {
+    display: flex; /* Ensure proper alignment */
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    ion-col {
+      flex: 0 0 48%; /* 2 cards per row on small screens */
+    }
+  }
+  
+  @media (max-width: 400px) {
+    ion-col {
+      flex: 0 0 100%; /* 1 card per row on very small screens */
+    }
+  }
+  
