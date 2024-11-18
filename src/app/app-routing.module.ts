@@ -51,11 +51,12 @@ const routes: Routes = [
     ],
   },
 
-  // Standalone routes (login, signup, etc.)
+
   {
     path: 'login',
     loadChildren: () =>
       import('./login/login.module').then((m) => m.LoginPageModule),
+    
   },
   {
     path: 'signup',
@@ -114,11 +115,11 @@ const routes: Routes = [
   },
 
 
-  // Wildcard route for undefined paths
-  {// Redirect undefined routes to login page
-    path: '', // Wildcard for undefined routes
+
+  {
+    path: '',
     redirectTo: 'tabs/categories',
-    pathMatch: 'full', // Ensure 'pathMatch' is set to 'full'
+    pathMatch: 'full',
   },
 ];
 

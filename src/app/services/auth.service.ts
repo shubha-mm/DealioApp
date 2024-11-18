@@ -9,42 +9,46 @@ import { authState } from 'rxfire/auth'; // Import authState to get real-time us
 export class AuthService {
   constructor(private auth: Auth, private router: Router) {}
 
-  // Get current user as an observable
+
   getCurrentUser() {
-    return authState(this.auth); // This returns the current user as an observable
+    return authState(this.auth);
+  }
+  isAuthenticated(): boolean {
+    const user = localStorage.getItem('user');
+    return !!user;
   }
 
-  // Login with email and password
+
   login(email: string, password: string) {
     return signInWithEmailAndPassword(this.auth, email, password)
       .then((userCredential) => {
-        // If login is successful, navigate to the home page
+
         this.router.navigate(['/tabs/home']);
       })
       .catch((error) => {
         console.error('Login failed', error);
-        throw error; // Propagate error if login fails
+        throw error;
       });
   }
 
-  // Logout and redirect to login page
+
   logout() {
     return signOut(this.auth).then(() => {
       this.router.navigate(['/login']);
     });
   }
 
-  // Sign up with email and password
+
   signup(email: string, password: string) {
     return createUserWithEmailAndPassword(this.auth, email, password)
       .then((userCredential) => {
-        // On successful signup, navigate to home page
+
         this.router.navigate(['/tabs/home']);
         return userCredential;
       })
       .catch((error) => {
         console.error('Signup failed', error);
-        throw error; // Propagate error if signup fails
+        throw error;
       });
   }
   googleLogin(): Promise<any> {
@@ -74,7 +78,7 @@ export class AuthService {
   }
 
 
-  // Reset password
+
   async resetPassword(email: string): Promise<void> {
     try {
       await sendPasswordResetEmail(this.auth, email);
