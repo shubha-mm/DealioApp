@@ -1,88 +1,125 @@
-/*********************
- * Toys Page Styles *
- *********************/
+/***********************
+ * Enhanced Card Styles *
+ ***********************/
 
-/* Search Bar Styles */
-ion-searchbar {
-  --background: #f9f9f9;
-  --placeholder-color: #aaa;
-  margin: 10px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Grid Layout */
-ion-grid {
-  padding: 10px;
-}
-
-ion-row {
-  justify-content: center;
-}
-
-/* Card Styles */
+/* Card styles */
 ion-card {
-  width: 100%;
-  max-width: 180px; /* Uniform card size */
-  margin: 10px auto; /* Center alignment */
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden; /* Ensure contents don’t overflow */
-  text-align: center;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  width: 160px; /* Consistent card size */
+  height: 250px; /* Adjusted height to fit content properly */
+  border-radius: 10px; /* Smooth rounded corners */
+  overflow: hidden; /* Ensure content stays inside */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  background-color: #ffffff; /* White background for the card */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Space out card content */
+  align-items: center; /* Center content horizontally */
 }
 
-/* Add a hover effect for cards */
 ion-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px); /* Slight hover lift */
+  background-color: #f9f9f9; /* Light gray background on hover */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
 }
 
-/* Card Image */
+/* Card image styles */
+ion-card img {
+  width: 80%; /* Slight padding for the image */
+  height: 100px; /* Consistent image height */
+  object-fit: contain; /* Maintain aspect ratio */
+  margin-top: 10px; /* Add space above the image */
+  background-color: #f2f2f2; /* Neutral background */
+  border-radius: 5px; /* Slightly rounded edges for the image */
+}
+
+/* Card styles */
+ion-card {
+  width: 180px; /* Fixed width for uniform size */
+  height: 300px; /* Adjusted height to fit content properly */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.3s ease-in-out;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+ion-card:hover {
+  transform: translateY(-5px); /* Move card slightly upward */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  background-color: #ff9900; /* Change background color to orange */
+  color: #ffffff; /* Change text color to white */
+}
+
+/* Card image styles */
 ion-card img {
   width: 100%;
-  height: 150px; /* Fixed height for images */
-  object-fit: cover; /* Ensure images are scaled properly */
-  border-bottom: 1px solid #f1f1f1;
-}
-
-/* Card Header */
-ion-card-header {
+  height: 140px; /* Consistent image height */
+  object-fit: contain; /* Prevent image distortion */
   padding: 8px;
-  background-color: #ffffff;
+  background-color: #f9f9f9;
+  transition: opacity 0.3s ease-in-out;
 }
 
+ion-card:hover img {
+  opacity: 0.9; /* Slight fade effect on hover */
+}
+
+/* Card title styles */
 ion-card-title {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
+  margin-top: 8px;
   color: #333;
-  margin: 0;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.3s ease-in-out;
 }
 
-/* Card Content */
+ion-card:hover ion-card-title {
+  color: #ffffff; /* Change title color on hover */
+}
+
+/* Card content */
 ion-card-content {
   padding: 10px;
-  background-color: #fafafa;
+  font-size: 0.85rem;
+  color: #28a745; /* Green text for price or availability */
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 8px;
+  transition: color 0.3s ease-in-out;
 }
 
-ion-card-content p {
-  font-size: 14px;
-  color: #555;
-  margin: 5px 0;
+ion-card:hover ion-card-content {
+  color: #ffffff; /* Change content color on hover */
 }
 
-/* Add-to-Cart Button */
+/* Add-to-Cart Button Styles */
 ion-button {
-  --background: #ff9900;
-  --background-activated: #e68a00;
-  --background-hover: #e68a00;
-  --color: white;
-  font-size: 14px;
-  border-radius: 5px;
-  margin-top: 10px;
+  --padding:10px;
+  
+  --background: #fff;
+  --color: black;
+  --border-radius: 8px;
+  --box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-/* Responsive Design */
+ion-button:hover {
+  --background: #ffffff;
+  --color: #ff9900;
+  --box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive styling for smaller devices */
 @media (max-width: 600px) {
   ion-col {
     flex: 0 0 48%;
@@ -95,6 +132,13 @@ ion-button {
   }
 
   ion-card {
-    max-width: 100%;
+    width: 100%;
   }
 }
+@media (max-width: 600px) {
+  ion-button {
+    font-size: 10px; /* Slightly smaller text for mobile */
+    width: 100%; /* Full width for smaller screens */
+  }
+}
+
