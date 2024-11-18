@@ -10,6 +10,7 @@ const routes: Routes = [
     path: '',
     redirectTo: 'login', // Default redirect to login page
     pathMatch: 'full',
+    
   },
 
   // Tabs and their child routes

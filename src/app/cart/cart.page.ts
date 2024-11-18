@@ -9,20 +9,20 @@ import { Router } from '@angular/router';
 })
 export class CartPage implements OnInit {
   cartItems: any[] = [];
-  totalPrice: number = 0; // Variable to track the total price of the cart
+  totalPrice: number = 0; 
 
   constructor(private cartService: CartService, private router: Router) {}
 
   ngOnInit() {
-    // Retrieve cart items when the component initializes
+    
     this.cartItems = this.cartService.getCartItems();
-    this.calculateTotalPrice(); // Recalculate the total price
+    this.calculateTotalPrice();
   }
 
-  // Update the quantity of an item
+ 
   updateQuantity(item: any, quantity: number) {
     if (quantity > 0) {
-      // Update quantity in CartService
+    
       this.cartService.updateQuantity(item, quantity);
     } else {
       // Remove item if the quantity is set to zero

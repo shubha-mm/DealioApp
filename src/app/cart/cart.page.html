@@ -12,14 +12,14 @@
         <p>\${{ item.price }} x {{ item.quantity }} = \${{ item.price * item.quantity }}</p>
       </ion-label>
 
-      <!-- Quantity selector -->
+   
       <ion-select [(ngModel)]="item.quantity" (ionChange)="updateQuantity(item, item.quantity)">
         <ion-select-option *ngFor="let quantity of [1, 2, 3, 4, 5]" [value]="quantity">
           {{ quantity }}
         </ion-select-option>
       </ion-select>
 
-      <!-- Remove button -->
+    
       <ion-button color="danger" slot="end" (click)="removeItem(item)">Remove</ion-button>
     </ion-item>
   </ion-list>

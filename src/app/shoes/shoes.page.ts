@@ -61,12 +61,11 @@ export class ShoesPage {
     },
   ];
 
-  // Filtered Products Array
+
   filteredProducts = [...this.products];
 
   constructor(private navCtrl: NavController, private cartService: CartService) {}
 
-  // Filter shoe products based on the search term
   filterProducts() {
     const search = this.searchTerm.toLowerCase();
     this.filteredProducts = this.products.filter((product) =>
@@ -76,19 +75,19 @@ export class ShoesPage {
 
   addToCart(product: any) {
     if (product) {
-      product.isAdding = true; // Set the loading state for the specific product
+      product.isAdding = true;
       setTimeout(() => {
         this.cartService.addToCart(product);
-        product.isAdding = false; // Reset the loading state
+        product.isAdding = false; 
         console.log('Added to cart:', product);
-      }, 10); // Simulate a delay (e.g., for a backend request)
+      }, 0); 
     } else {
       console.error('Product is not defined or invalid');
     }
   }
 
-  // Navigate back to the categories page
+ 
   goBack() {
-    this.navCtrl.navigateBack('/tabs/categories'); // Replace with your fallback route
+    this.navCtrl.navigateBack('/tabs/categories');
   }
 }
