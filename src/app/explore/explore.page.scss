@@ -127,10 +127,10 @@ strong {
 
 /* Add-to-Cart Button Styles */
 ion-button {
-  --background: #ff9900; /* Bright orange background */
+  --background: #fff; /* Bright orange background */
   --background-hover: #e68a00; /* Darker orange on hover */
   --background-activated: #cc7a00; /* Even darker orange when pressed */
-  --color: white; /* Text color */
+  --color: black; /* Text color */
   font-size: 14px; /* Font size for readability */
   font-weight: bold; /* Bold text for emphasis */
   border: none; /* Remove button border */
