@@ -70,12 +70,12 @@ export class GroceriesPage {
 
   addToCart(product: any) {
     if (product) {
-      product.isAdding = true; // Set the loading state for the specific product
+      product.isAdding = true; 
       setTimeout(() => {
         this.cartService.addToCart(product);
-        product.isAdding = false; // Reset the loading state
+        product.isAdding = false;
         console.log('Added to cart:', product);
-      }, 10); // Simulate a delay (e.g., for a backend request)
+      }, 10);
     } else {
       console.error('Product is not defined or invalid');
     }
