@@ -30,9 +30,9 @@ export class SignUpPage implements OnInit {
     this.authService.githubLogin()
       .then(() => {
         console.log('GitHub login successful, redirecting to home.');
-        this.router.navigate(['/tabs/home']); // Redirect after successful login
+        this.router.navigate(['/tabs/home']);
       })
-      .catch((error: any) => { // Explicitly typing the error parameter
+      .catch((error: any) => {
         console.error('GitHub login error:', error);
       });
   }
@@ -41,8 +41,8 @@ export class SignUpPage implements OnInit {
     try {
       await this.authService.googleLogin();
       console.log('Google login successful');
-      this.router.navigate(['/tabs/home']); // Redirect after successful login
-    } catch (error: any) { // Explicitly typing the error parameter
+      this.router.navigate(['/tabs/home']);
+    } catch (error: any) { 
       console.error('Google login failed', error);
     }
   }

@@ -10,12 +10,19 @@
       <ion-label>
         <h2>{{ item.name }}</h2>
         <p>Quantity: {{ item.quantity }}</p>
-        <p>Price: {{ item.price }} x {{ item.quantity }} = \${{ item.price * item.quantity }}</p>
+        <p>Price: {{ item.price }} x {{ item.quantity }} = ₹{{ item.price * item.quantity }}</p>
       </ion-label>
     </ion-item>
   </ion-list>
 
-  <h3>Total Amount: \${{ totalAmount }}</h3>
+  <h3>Total Amount: ₹{{ totalAmount }}</h3>
 
-  <ion-button expand="block" color="primary" (click)="makePayment()">Pay Now</ion-button>
+  <ion-button
+    expand="block"
+    color="primary"
+    [disabled]="totalAmount === 0"
+    (click)="makePayment()"
+  >
+    Pay Now
+  </ion-button>
 </ion-content>
