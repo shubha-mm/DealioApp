@@ -1,0 +1,20 @@
+.payment-card {
+  max-width: 600px;
+  margin: 20px auto;
+
+  ion-card-header {
+    background: var(--ion-color-primary);
+
+    ion-card-title {
+      color: var(--ion-color-primary-contrast);
+    }
+  }
+
+  ion-card-content {
+    padding: 20px;
+  }
+
+  ion-button {
+    margin-top: 16px;
+  }
+}
