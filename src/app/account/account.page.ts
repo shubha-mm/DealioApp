@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Auth } from '@angular/fire/auth';
 import { Firestore, doc, getDoc, setDoc } from '@angular/fire/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-account',
@@ -13,13 +14,14 @@ export class AccountPage implements OnInit {
   profileForm: FormGroup; // Form for user profile
   profile: any = {}; // Stores user profile data
   selectedFile: File | null = null; // File selected by the user
+  isLoading: boolean = false; // Loading state for save operation
 
   constructor(
     private fb: FormBuilder,
     private auth: Auth,
-    private firestore: Firestore
+    private firestore: Firestore,
+    private navCtrl: NavController // NavController for navigation
   ) {
-    // Initialize the form
     this.profileForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -29,80 +31,77 @@ export class AccountPage implements OnInit {
   }
 
   ngOnInit() {
-    this.loadProfile(); // Load user profile on page initialization
+    this.loadProfile();
   }
 
-  // Load user profile data from Firestore
   async loadProfile() {
     const user = this.auth.currentUser;
     if (user) {
       const userDocRef = doc(this.firestore, `users/${user.uid}`);
-      const userDoc = await getDoc(userDocRef);
-      if (userDoc.exists()) {
-        this.profile = userDoc.data(); // Populate the profile
-        this.profileForm.patchValue(this.profile); // Pre-fill form fields
+      try {
+        const userDoc = await getDoc(userDocRef);
+        if (userDoc.exists()) {
+          this.profile = userDoc.data();
+          this.profileForm.patchValue(this.profile);
+        }
+      } catch (error) {
+        console.error('Error loading profile:', error);
+        alert('Failed to load profile. Please try again.');
       }
     }
   }
 
-  // Handle file selection for profile image
   onFileSelected(event: any) {
-    const file = event.target.files[0]; // Get the selected file
+    const file = event.target.files[0];
     if (file) {
-      this.selectedFile = file; // Assign the file to selectedFile
+      this.selectedFile = file;
       const reader = new FileReader();
-
-      // Preview the image
       reader.onload = (e: any) => {
         this.profile.imageUrl = e.target.result;
       };
-
-      // Handle file reading errors
-      reader.onerror = () => {
-        console.error('There was an error reading the file.');
-      };
-
-      reader.readAsDataURL(file); // Read the file as Data URL for preview
-    } else {
-      console.warn('No file was selected.');
+      reader.onerror = () => console.error('Error reading file.');
+      reader.readAsDataURL(file);
     }
   }
 
-  // Save profile data to Firestore and upload image to Firebase Storage
   async saveProfile() {
     const user = this.auth.currentUser;
     if (user && this.profileForm.valid) {
       const userDocRef = doc(this.firestore, `users/${user.uid}`);
       const profileData = { ...this.profileForm.value };
-  
+      this.isLoading = true;
+
       if (this.selectedFile) {
         try {
           const storage = getStorage();
           const fileRef = ref(storage, `profile-images/${user.uid}`);
-          // Upload file to Firebase Storage
           await uploadBytes(fileRef, this.selectedFile);
-          // Get the download URL of the uploaded file
           profileData.imageUrl = await getDownloadURL(fileRef);
         } catch (error) {
           console.error('Error uploading image:', error);
           alert('Image upload failed. Please try again.');
-          return; // Exit the function if upload fails
+          this.isLoading = false;
+          return;
         }
       }
-  
-      // Save profile data to Firestore
+
       try {
         await setDoc(userDocRef, profileData, { merge: true });
         alert('Profile updated successfully!');
+        this.loadProfile();
       } catch (error) {
         console.error('Error saving profile data:', error);
         alert('Failed to save profile. Please try again.');
+      } finally {
+        this.isLoading = false;
       }
     } else {
       alert('Please fill out all required fields.');
     }
   }
-  
 
-  
+  // Navigate back to the previous page
+  goBack() {
+    this.navCtrl.back();
+  }
 }

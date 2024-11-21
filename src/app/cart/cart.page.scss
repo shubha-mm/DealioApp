@@ -1,8 +1,41 @@
+/**********************
+ * Cart Page Styling *
+ **********************/
+
+/* Select Dropdown Styling */
 ion-select {
   width: 80px;
   margin-left: 10px;
 }
 
+/* Button Styling */
 ion-button {
   margin-left: 10px;
+}
+
+/* Header Back Button */
+ion-button[slot="start"] {
+  --background: transparent;
+  --color: black;
+}
+
+/* Total Price Footer */
+ion-footer ion-toolbar {
+  background-color: #f8f9fa;
+}
+
+ion-footer ion-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+ion-footer ion-button {
+  margin: 10px;
+}
+
+/* Empty Cart Text */
+ng-template p {
+  text-align: center;
+  color: #666;
+  font-size: 1rem;
 }

@@ -7,7 +7,6 @@ export class CartService {
   private cart: any[] = [];
 
   constructor() {
-    
     const savedCart = localStorage.getItem('cart');
     if (savedCart) {
       this.cart = JSON.parse(savedCart);
@@ -38,7 +37,6 @@ export class CartService {
   }
 
   removeItem(item: any) {
-   
     this.cart = this.cart.filter(cartItem => cartItem.name !== item.name);
     this.saveCart();
   }

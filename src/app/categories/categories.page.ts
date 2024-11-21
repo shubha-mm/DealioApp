@@ -33,6 +33,6 @@ export class CategoriesPage {
 
 
   goBack() {
-    this.navCtrl.navigateBack('/categories'); 
+    this.navCtrl.navigateBack('/tabs/home'); 
   }
 }

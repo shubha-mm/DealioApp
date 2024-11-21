@@ -1,5 +1,10 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>Profile</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -34,9 +39,10 @@
         <ion-input formControlName="address" type="text"></ion-input>
       </ion-item>
 
-      <ion-button expand="block" type="submit" [disabled]="profileForm.invalid">
-        Save Profile
-      </ion-button>
+      <ion-button expand="block" type="submit" [disabled]="isLoading || profileForm.invalid">
+  <ion-spinner *ngIf="isLoading"></ion-spinner>
+  <span *ngIf="!isLoading">Save Profile</span>
+</ion-button>
     </form>
   </div>
 </ion-content>
