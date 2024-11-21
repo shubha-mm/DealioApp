@@ -117,6 +117,7 @@ export class CartPage implements OnInit {
     this.router.navigate(['/tabs/explore']);
   }
   goBack() {
-    this.navCtrl.back();
+    this.navCtrl.navigateBack('/tabs/explore');
+
   }
 }
