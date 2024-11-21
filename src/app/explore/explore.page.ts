@@ -10,7 +10,7 @@ export class ExplorePage {
 
   // Array of 20 products
   products = [
-    { name: 'BEARDO Perfume', price: 449, discountedPrice: 246, discount: 45, image: 'https://sp.yimg.com/ib/th?id=OPAC.B3VAvItUMg4Cxg474C474&o=5&pid=21.1&w=160&h=105' },
+    { name: 'BEARDO Perfume', price: 10, discountedPrice: 246, discount: 45, image: 'https://sp.yimg.com/ib/th?id=OPAC.B3VAvItUMg4Cxg474C474&o=5&pid=21.1&w=160&h=105' },
     { name: 'Denver Combo', price: 1160, discountedPrice: 614, discount: 47, image: 'https://tse3.mm.bing.net/th?id=OIP.OiGl4BlW17MUnvcxUHukowHaHa&pid=Api&P=0&h=180' },
     { name: 'Bellavita Perfume', price: 748, discountedPrice: 225, discount: 70, image: 'https://sp.yimg.com/ib/th?id=OPAC.z1Ez6x1liVMSvg474C474&o=5&pid=21.1&w=160&h=105' },
     { name: 'iPhone Screen Guard', price: 899, discountedPrice: 249, discount: 72, image: 'https://tse4.mm.bing.net/th?id=OIP.XC7LoGBBnhShVmkPSG2NUAHaHa&pid=Api&P=0&h=180' },
