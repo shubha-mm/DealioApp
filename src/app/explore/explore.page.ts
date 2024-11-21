@@ -49,8 +49,8 @@ export class ExplorePage {
     },
     {
       name: 'Wireless Earbuds',
-      price: 2999,
-      discountedPrice: 1999,
+      price: 2,
+      discountedPrice: 2,
       discount: 33,
       image: 'https://sp.yimg.com/ib/th?id=OPAC.wMFmQR%2bmnLdw7g474C474&o=5&pid=21.1&w=160&h=105',
     },

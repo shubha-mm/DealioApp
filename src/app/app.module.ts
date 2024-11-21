@@ -13,13 +13,13 @@ import { getStorage, provideStorage } from '@angular/fire/storage'; // Import th
 import { environment } from 'src/environments/environment';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { AccountPage } from './account/account.page';
-import { RazorpayService } from './services/razorpay.service';
+
 
 @NgModule({
   declarations: [AppComponent, TabsComponent],
 
   imports: [BrowserModule, IonicModule.forRoot(),ReactiveFormsModule, AppRoutingModule,HttpClientModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },RazorpayService, provideFirebaseApp(() => initializeApp({"projectId":"dealio-b246c","appId":"1:688662193534:web:0c883c45d9a686fbf17f2f","storageBucket":"dealio-b246c.firebasestorage.app","apiKey":"AIzaSyBokz0gjjxom1FUUiKk2RjCamhpKAvXP3M","authDomain":"dealio-b246c.firebaseapp.com","messagingSenderId":"688662193534"})), provideAuth(() => getAuth()), provideStorage(() => getStorage()), provideFirestore(() => getFirestore())],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, provideFirebaseApp(() => initializeApp({"projectId":"dealio-b246c","appId":"1:688662193534:web:0c883c45d9a686fbf17f2f","storageBucket":"dealio-b246c.firebasestorage.app","apiKey":"AIzaSyBokz0gjjxom1FUUiKk2RjCamhpKAvXP3M","authDomain":"dealio-b246c.firebaseapp.com","messagingSenderId":"688662193534"})), provideAuth(() => getAuth()), provideStorage(() => getStorage()), provideFirestore(() => getFirestore())],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

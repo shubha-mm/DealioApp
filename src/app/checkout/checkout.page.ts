@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RazorpayService } from '../services/razorpay.service';
+import { NavController } from '@ionic/angular';
 
 
 declare var Razorpay: any;
@@ -14,7 +15,7 @@ export class CheckoutPage implements OnInit {
   cartItems: any[] = [];
   totalAmount = 0;
 
-  constructor(private razorpayService: RazorpayService) {}
+  constructor(private razorpayService: RazorpayService,private navCtrl: NavController) {}
 
   ngOnInit() {
     this.loadCart();
@@ -83,5 +84,9 @@ export class CheckoutPage implements OnInit {
     this.cartItems = [];
     localStorage.removeItem('cart');
     alert('Order completed successfully.');
+  }
+
+  goBack() {
+    this.navCtrl.navigateBack('/tabs/cart'); 
   }
 }
