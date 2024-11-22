@@ -10,6 +10,7 @@ import { CartService } from '../cart.service';
 })
 export class HomePage {
   isDarkMode: boolean = false;
+  cartCount: number = 0; // Track the cart count dynamically
 
   products = [
     { name: 'Smart Watch', price: 45, image: 'https://m.media-amazon.com/images/I/712wglSBTaL._AC_SX679_.jpg' },
@@ -46,23 +47,33 @@ export class HomePage {
       }
     });
   }
-  
+
+  ngOnInit() {
+   // Update cart count on initialization
+  }
+
   addToCart(product: any) {
     if (product) {
-      this.cartService.addToCart(product);  
+      this.cartService.addToCart(product);
+      // Update cart count after adding an item
     } else {
       console.error('Product is not defined or invalid');
     }
   }
+
+ 
+
+  // Navigate to Cart Page
+  navigateToCart() {
+    this.navCtrl.navigateForward('/tabs/cart');
+  }
+
   closeMenu() {
     this.menu.close();
   }
 
- 
   logout() {
-  
     console.log('User logged out');
-   
     this.navCtrl.navigateRoot('/login');
   }
 }

@@ -128,6 +128,6 @@ export class ExplorePage {
 
   // Navigate back to the previous page
   goBack() {
-    this.navCtrl.back();
+    this.navCtrl.navigateBack('/tabs/home'); 
   }
 }

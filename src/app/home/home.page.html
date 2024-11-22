@@ -66,28 +66,31 @@
     </ion-buttons>
 
     <ion-title>
-      <img src="https://www.pngmart.com/files/12/Shopee-Logo-Transparent-PNG.png" alt="Amazon Logo" class="logo" />
+      <img
+        src="https://www.pngmart.com/files/12/Shopee-Logo-Transparent-PNG.png"
+        alt="Dealio Logo"
+        style="height: 30px; margin-right: 8px;"
+      />
+      <span style="font-size: 18px; font-weight: bold;">Dealio</span>
     </ion-title>
-    <span class="logo-text">Dealio</span>
-    
+
     <ion-buttons slot="end">
-      <ion-button routerLink="/tabs/cart">
-        <ion-icon name="cart-outline"></ion-icon>
-        <ion-badge color="warning" slot="end" class="cart-badge">0</ion-badge>
+      <ion-button [routerLink]="['/tabs/cart']">
+        <ion-icon slot="icon-only" name="cart-outline"></ion-icon>
+        <ion-badge color="primary" class="cart-badge">{{ cartCount }}</ion-badge>
 
       </ion-button>
-
     </ion-buttons>
-  
+    
+    
+    
   </ion-toolbar>
-  <ion-toolbar color="light" class="search-toolbar">
+  
     <ion-searchbar
-      placeholder="Search in Amazon Pay Rewards Store"
-      class="custom-searchbar"
+      placeholder="Search Here"
       mode="ios"
       [debounce]="500"
     ></ion-searchbar>
-  </ion-toolbar>
   <ion-toolbar color="white" class="location-toolbar">
     <ion-icon name="location-outline" class="location-icon"></ion-icon>
     <span class="location-text">Deliver to Shubham - Phagwara 144401</span>
