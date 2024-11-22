@@ -18,4 +18,8 @@ export class RazorpayService {
   getKey() {
     return environment.razorpayKey;
   }
+
+  getRazorpayKey(): string {
+    return environment.razorpayKey;
+  }
 }
